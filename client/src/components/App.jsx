@@ -182,6 +182,7 @@ class App extends React.Component {
         <SpanText> #12 </SpanText> <H4Text>of 139</H4Text><Text> things to do in San Jose</Text>
         <ImgHeart success = {this.state.entered} entered = {this.enterImage}/>
         <Text2>Historic Sites, </Text2> <Text2>  Mysterious Sites</Text2>
+        <h5>Hello World</h5>
         {/* <ImgShare enteredShare = {this.enterShareImage} success= {this.state.enteredShare}/> */}
         </TextHeader>
       </div>
