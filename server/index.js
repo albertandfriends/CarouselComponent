@@ -28,9 +28,21 @@ app.get('/api/trips/:id/reviews',(req,res,next) => {
 });
 
 app.get('/api/trips/:id/photos',(req,res,next) => {
-
+// var newObj = {'photo': 1};
+// res.send(newObj);
+db.connection.query(`SELECT urlLink from images WHERE imageID in (1,2,3,4,5)`, (err, results, fields) => {
+  if(err) {
+    console.error('there is an error getting urls', err);
+    throw err;
+  } else {
+    console.log('results are', results);
+    res.send(results);
+  }
+})
 });
 
 app.listen(PORT, () => {
   console.log('Listening on PORT', PORT);
 })
+
+module.exports = app;
