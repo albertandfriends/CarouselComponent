@@ -15,6 +15,7 @@ import durationClock from '../../../images/durationClock.png';
 import mapMarker from '../../../images/mapMarker.png';
 import pencil from '../../../images/pencil.png';
 import Camera from '../../../images/camera.png';
+import ModalTravelers from './ModalTravelers.jsx';
 
 import {Button, Title, Rating, Reviews, TextHeader, SpanText, H4Text, Text, Heart, IconShare, Text2, CarouselFooter, CarouselFooterText, CarouselFooterTextTwo, CarouselFooterImage, CarouselFooterButton, WhiteArrowDown, Divider, OverviewDiv, OverviewText, OverviewPar, OverviewMoreSpan, OverviewFirstClock, OverviewHoursText, OverviewHoursText2, OverviewHoursAnchor, OverviewDurationClock, OverviewDurationText, OverviewHoursText3, OverviewAddress, OverviewAddressText, OverviewAddressText2, OverviewMapSpan, OverviewImproveSpan, OverviewPencil, TravelersChoice,
 CarouselPhotosButton, TravelersPhotoLogo, ContainerDiv, ContainerDivRatingAndReviews, ContainerDivHeaderText, Text3, Image0, CloseIcon } from './AppStyles.js';
@@ -55,13 +56,27 @@ class App extends React.Component {
       enteredShare: true,
       show: false,
       galleryShow: false,
-      gallery: ["https://myfecimages.s3-us-west-1.amazonaws.com/winchester+pictures/orbs-of-light-floating.jpg"]
+      gallery: ["https://myfecimages.s3-us-west-1.amazonaws.com/winchester+pictures/orbs-of-light-floating.jpg"],
+      travelersHovered: false
     }
     this.enterImage = this.enterImage.bind(this);
     this.enterShareImage = this.enterShareImage.bind(this);
     this.showModal = this.showModal.bind(this);
     this.hideModal = this.hideModal.bind(this);
     this.showPhotosModal = this.showPhotosModal.bind(this);
+    this.showTravelersModal = this.showTravelersModal.bind(this);
+    this.closeTravelersModal = this.closeTravelersModal.bind(this);
+  }
+  showTravelersModal() {
+    this.setState({
+      travelersHovered: true
+    });
+
+  }
+  closeTravelersModal() {
+    this.setState({
+      travelersHovered: false
+    });
   }
   enterImage() {
     if(this.state.entered === false) {
@@ -196,7 +211,10 @@ class App extends React.Component {
       </OverviewImproveSpan>
       </OverviewDiv>
       <ShowGalleryPhotosModal galleryShow= {this.state.galleryShow} handleClose = {this.hideModal} images = {this.state.gallery}/>
-      <TravelersChoice src={"https://static.tacdn.com/img2/travelers_choice/2020/TC_L.svg"} onMouseEnter = {() => this.showTravelersModal()}/>
+      <ModalTravelers show = {this.state.travelersHovered}>
+        <h1>What is Travelers' Choice?</h1>
+      </ModalTravelers>
+      <TravelersChoice src={"https://static.tacdn.com/img2/travelers_choice/2020/TC_L.svg"} onMouseEnter = {() => this.showTravelersModal()} onMouseLeave = {() => this.closeTravelersModal()}/>
       <CarouselPhotosButton onClick={() =>  this.showPhotosModal()}>
         All photos(4)
         </CarouselPhotosButton>
