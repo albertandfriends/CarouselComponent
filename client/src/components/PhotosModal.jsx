@@ -17,12 +17,24 @@ color:  #545454;
 display: block;
 `;
 
+const ImageBox = styled.div`
+  backgroundImage: ${props => `url(${props.background})`},
+  backgroundSize: 'cover',
+  backgroundPosition: 'center',
+  height: '225px',
+  width: '220px',
+  position: 'absolute',
+  top: '-25px',
+  right: '-10px',
+};`;
+
 const PhotosModal = ({ handleClose, show, children, images }) => {
   if(show) {
+    console.log('images', images);
   return (
     <ModalToDisplay>
         {children}
-        <h1>{images}</h1>
+          <ImageBox background = {images[0].urlLink}/>
     </ModalToDisplay>
   );
   } else {

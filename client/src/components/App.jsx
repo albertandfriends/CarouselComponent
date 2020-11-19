@@ -17,7 +17,7 @@ import pencil from '../../../images/pencil.png';
 import Camera from '../../../images/camera.png';
 
 import {Button, Title, Rating, Reviews, TextHeader, SpanText, H4Text, Text, Heart, IconShare, Text2, CarouselFooter, CarouselFooterText, CarouselFooterTextTwo, CarouselFooterImage, CarouselFooterButton, WhiteArrowDown, Divider, OverviewDiv, OverviewText, OverviewPar, OverviewMoreSpan, OverviewFirstClock, OverviewHoursText, OverviewHoursText2, OverviewHoursAnchor, OverviewDurationClock, OverviewDurationText, OverviewHoursText3, OverviewAddress, OverviewAddressText, OverviewAddressText2, OverviewMapSpan, OverviewImproveSpan, OverviewPencil, TravelersChoice,
-CarouselPhotosButton, TravelersPhotoLogo, ContainerDiv, ContainerDivRatingAndReviews, ContainerDivHeaderText, Text3 } from './AppStyles.js';
+CarouselPhotosButton, TravelersPhotoLogo, ContainerDiv, ContainerDivRatingAndReviews, ContainerDivHeaderText, Text3, Image0, CloseIcon } from './AppStyles.js';
 
 import Modal from './modal.jsx';
 
@@ -29,6 +29,21 @@ import Modal from './modal.jsx';
  const ImgShare = ({ success, enteredShare, showModal }) => (
   <IconShare onMouseEnter={() => enteredShare()} onMouseLeave={() => enteredShare()} src={success ? shareIcon : shareIconBlack} onClick = {showModal}/>
 );
+const ShowGalleryPhotosModal = ({handleClose,galleryShow, images}) => {
+  if(galleryShow === true) {
+  return (
+  <PhotosModal show={galleryShow} handleClose={handleClose} images={images}>
+  <Image0 src={images[0].urlLink}></Image0>
+  <Image0 src={images[1].urlLink}></Image0>
+  <Image0 src={images[2].urlLink}></Image0>
+  <Image0 src={images[3].urlLink}></Image0>
+  <CloseIcon onClick = {() => handleClose()}/>
+  </PhotosModal>
+  );
+} else {
+  return null;
+}
+}
 
 
 class App extends React.Component {
@@ -40,7 +55,7 @@ class App extends React.Component {
       enteredShare: true,
       show: false,
       galleryShow: false,
-      gallery: []
+      gallery: ["https://myfecimages.s3-us-west-1.amazonaws.com/winchester+pictures/orbs-of-light-floating.jpg"]
     }
     this.enterImage = this.enterImage.bind(this);
     this.enterShareImage = this.enterShareImage.bind(this);
@@ -85,6 +100,7 @@ class App extends React.Component {
     }
   }
 
+
   hideModal() {
     this.setState({ galleryShow: false });
   };
@@ -96,9 +112,16 @@ class App extends React.Component {
          reviewCount: response.data[0].reviewCount.toLocaleString('en')
         })
       }
-    )
-  }
+    );
+      axios.get('/api/trips/1/photos').then((response) => {
+        this.setState({
+          gallery: response.data
+        })
+      });
+    }
   render() {
+    const images = this.state.gallery;
+    let i = 0;
     return (
       <div className="component">
         <ContainerDiv>
@@ -117,9 +140,6 @@ class App extends React.Component {
           <p>Email</p>
           <p>Copy link</p>
         </Modal>
-        <PhotosModal show={this.state.galleryShow} handleClose={this.hideModal}>
-        <img src="https://myfecimages.s3-us-west-1.amazonaws.com/winchester+pictures/orbs-of-light-floating.jpg"></img>
-        </PhotosModal>
         </TextHeader>
         <Carousel/>
         <CarouselFooter>
@@ -175,9 +195,10 @@ class App extends React.Component {
        Improve this listing
       </OverviewImproveSpan>
       </OverviewDiv>
-      <TravelersChoice src={"https://static.tacdn.com/img2/travelers_choice/2020/TC_L.svg"}/>
+      <ShowGalleryPhotosModal galleryShow= {this.state.galleryShow} handleClose = {this.hideModal} images = {this.state.gallery}/>
+      <TravelersChoice src={"https://static.tacdn.com/img2/travelers_choice/2020/TC_L.svg"} onMouseEnter = {() => this.showTravelersModal()}/>
       <CarouselPhotosButton onClick={() =>  this.showPhotosModal()}>
-        All photos(5)
+        All photos(4)
         </CarouselPhotosButton>
         <TravelersPhotoLogo src={Camera}/>
       </div>

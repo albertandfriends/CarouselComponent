@@ -312,3 +312,26 @@ export const ContainerDivHeaderText = styled.div`
 `;
 
 export const IconContainerDIv = styled.div`display: flex; `;
+
+export const Image0 = styled.img`width: 221px; height: 140px; margin: 20px 20px 0px 20px; &:hover {
+  opacity: 0.8;
+}
+cursor: pointer;
+`
+
+export const CloseIcon = styled.a`display:block;
+  box-sizing:border-box;
+  width:15px;
+  height:20px;
+  border-radius: 100%;
+  background: -webkit-linear-gradient(-45deg, transparent 0%, transparent 46%, #474747 46%, #474747 56%,transparent 56%, transparent 100%), -webkit-linear-gradient(45deg, transparent 0%, transparent 46%, #474747 46%, #474747 56%,transparent 56%, transparent 100%);
+  background-color:transparent;
+  transition: all 0.3s ease;
+  &:hover {
+    opacity: 0.8;
+  }
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+`;
