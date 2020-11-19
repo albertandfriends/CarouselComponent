@@ -4,6 +4,7 @@ import RightArrow from './RightArrow.jsx';
 import Slide from './slide.jsx';
 import leftArrow from '../../../images/whiteArrowLeft.png';
 import rightArrow from '../../../images/whiteArrowRight.png';
+import PhotosModal from './PhotosModal.jsx';
 import axios from 'axios';
 const imgUrls = [
  "https://myfecimages.s3-us-west-1.amazonaws.com/winchester+pictures/orbs-of-light-floating.jpg",

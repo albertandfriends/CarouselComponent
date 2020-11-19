@@ -7,6 +7,7 @@ import shareIcon from '../../../images/shareIcon.png';
 import shareIconBlack from '../../../images/shareIconBlack.png';
 import Carousel from './Carousel.jsx';
 import RightArrow from './RightArrow.jsx';
+import PhotosModal from './PhotosModal.jsx';
 import walkingPNG from '../../../images/walking.png';
 import whiteArrowDown from '../../../images/WhiteArrowDown.jpg';
 import firstClock from '../../../images/firstClock.png';
@@ -16,7 +17,7 @@ import pencil from '../../../images/pencil.png';
 import Camera from '../../../images/camera.png';
 
 import {Button, Title, Rating, Reviews, TextHeader, SpanText, H4Text, Text, Heart, IconShare, Text2, CarouselFooter, CarouselFooterText, CarouselFooterTextTwo, CarouselFooterImage, CarouselFooterButton, WhiteArrowDown, Divider, OverviewDiv, OverviewText, OverviewPar, OverviewMoreSpan, OverviewFirstClock, OverviewHoursText, OverviewHoursText2, OverviewHoursAnchor, OverviewDurationClock, OverviewDurationText, OverviewHoursText3, OverviewAddress, OverviewAddressText, OverviewAddressText2, OverviewMapSpan, OverviewImproveSpan, OverviewPencil, TravelersChoice,
-CarouselPhotosButton, TravelersPhotoLogo} from './AppStyles.js';
+CarouselPhotosButton, TravelersPhotoLogo, ContainerDiv, ContainerDivRatingAndReviews, ContainerDivHeaderText, Text3 } from './AppStyles.js';
 
 import Modal from './modal.jsx';
 
@@ -30,8 +31,6 @@ import Modal from './modal.jsx';
 );
 
 
-
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -39,12 +38,15 @@ class App extends React.Component {
       reviewCount: '',
       entered: true,
       enteredShare: true,
-      show: false
+      show: false,
+      galleryShow: false,
+      gallery: []
     }
     this.enterImage = this.enterImage.bind(this);
     this.enterShareImage = this.enterShareImage.bind(this);
     this.showModal = this.showModal.bind(this);
     this.hideModal = this.hideModal.bind(this);
+    this.showPhotosModal = this.showPhotosModal.bind(this);
   }
   enterImage() {
     if(this.state.entered === false) {
@@ -69,11 +71,22 @@ class App extends React.Component {
   }
   }
   showModal() {
+    if(this.state.show === false) {
     this.setState({ show: true });
+    } else {
+      this.setState({show: false});
+    }
   };
+  showPhotosModal() {
+    if(this.state.galleryShow === false) {
+      this.setState({galleryShow: true});
+    } else {
+      this.setState({galleryShow: false});
+    }
+  }
 
   hideModal() {
-    this.setState({ show: false });
+    this.setState({ galleryShow: false });
   };
   componentDidMount() {
     axios.get('/api/trips/1/reviews').then(
@@ -88,18 +101,25 @@ class App extends React.Component {
   render() {
     return (
       <div className="component">
+        <ContainerDiv>
         <Title>Winchester Mystery House </Title>
-        <Rating style ={{rating: 4}} > </Rating>
+        </ContainerDiv>
+        <ContainerDivRatingAndReviews>
+        <Rating style ={{rating: 3}} > </Rating>
         <Reviews>{this.state.reviewCount} Reviews </Reviews>
+        </ContainerDivRatingAndReviews>
         <TextHeader>
         <SpanText> #12 </SpanText> <H4Text>of 139</H4Text><Text> things to do in San Jose</Text>
         <ImgHeart success = {this.state.entered} entered = {this.enterImage}/>
-        <Text2>Historic Sites,  </Text2> <Text2>  Mysterious Sites</Text2>
+        <Text2>Historic Sites,  </Text2> <Text3>  Mysterious Sites</Text3>
         <ImgShare enteredShare = {this.enterShareImage} success= {this.state.enteredShare} showModal={this.showModal}/>
-        <Modal show={this.state.show} handleClose={this.hideModal}>
+        <Modal show={this.state.show}>
           <p>Email</p>
           <p>Copy link</p>
         </Modal>
+        <PhotosModal show={this.state.galleryShow} handleClose={this.hideModal}>
+        <img src="https://myfecimages.s3-us-west-1.amazonaws.com/winchester+pictures/orbs-of-light-floating.jpg"></img>
+        </PhotosModal>
         </TextHeader>
         <Carousel/>
         <CarouselFooter>
@@ -156,7 +176,7 @@ class App extends React.Component {
       </OverviewImproveSpan>
       </OverviewDiv>
       <TravelersChoice src={"https://static.tacdn.com/img2/travelers_choice/2020/TC_L.svg"}/>
-      <CarouselPhotosButton>
+      <CarouselPhotosButton onClick={() =>  this.showPhotosModal()}>
         All photos(5)
         </CarouselPhotosButton>
         <TravelersPhotoLogo src={Camera}/>

@@ -8,33 +8,25 @@ export const Button = styled.button`
   margin: 0 1em;
   padding: 0.25em 1em;
 `;
-export const Title = styled.h1`font-size: 32px;
-line-height: 36px;
+export const Title = styled.h1`
+font-size: 32px;
 font-weight: 700;
 color: #000;
-text-align: left;
-position: relative;
-left: 10px;
-top: 0px;
 font-family: Arial;
-margin-block-start: 0.67em;
-margin-block-end: 0.67em;
-margin-inline-start: 0px;
-margin-inline-end: 0px;`;
+margin-left: 15px;
+`;
 
 export const Rating = styled.div`
 --percent: calc(var(4) / 5 * 100%);
 --width: 20%;
-
-display: inline-block;
+margin-left: 13px;
 letter-spacing: 1px;
 font-size: var(--dot-size);
 font-family: times; // make sure ★ appears correctly
 line-height: -5;
-position: relative;
-left: -182px;
-top: -25px;
 margin-right: -4px;
+position:relative;
+top: -30px;
 
 &::before {
   content: '●●●●○';
@@ -45,31 +37,28 @@ margin-right: -4px;
   -webkit-background-clip: text;
   -webkit-text-fill-color: #00aa6c;
   -webkit-text-stroke: 0px #00aa6c;
-
 }
 }
 `
 
-export const Reviews = styled.p`position: relative;
-left: 100px;
-bottom: 27px;
-display:inline-block;
-float:left;
+export const Reviews = styled.p`
 font-family: Poppins;
 font-size: 16px;
 font-weight: 530;
-margin-left: 5px;
+margin-left: 13px;
 font-size: 14px;
-text-decoration-style: dotted;
-width: 24%;
+border-bottom: 1px dotted #e0e0e0;
+width: 14%;
 color: #474747;
+position:relative;
+top: -32px;
 &:hover {
-  text-decoration: underline;
+  border-bottom: 1px solid #474747;
   font-weight: bold;
 }
 `;
 export const TextHeader = styled.div`display: flex; justify-content: left;`;
-export const SpanText =styled.span`position:relative; left: -180px; top: -20px; font-weight: bold;
+export const SpanText =styled.span`position:relative; left: 12px; top: -20px; font-weight: bold;
 color: #474747;
 display: inline-block;
 font-size: 14px;
@@ -77,9 +66,9 @@ line-height: 14px;`;
 export const H4Text = styled.p`line-height: 14px; display:  flex; justify-content: left; font-size: 14px;
 line-height: 18px;
 color: #474747;
-letter-spacing: .5px; position: relative; left: -177px; top: -36px;
+letter-spacing: .5px; position: relative; left: 16px; top: -36px;
 `;
-export const Text = styled.p`position:relative; left: -173px; top: -36px; display: inline-block;
+export const Text = styled.p`position:relative; left: 19px; top: -36px; display: inline-block;
 font-size: 14px;
 line-height: 18px;
 color: #474747;
@@ -91,28 +80,43 @@ min-height:18px;
 }`;
 export const Heart = styled.img`
  width: 15px; height: 15px; display: flex; justify-content: flex-start;position: relative;
- top: -25px; right: -270px;
+ top: -22px; right: -400px;
  opacity: 1; font-family: Poppins;
  cursor: pointer;
 `;
 
 export const IconShare = styled.img`
 width: 20px; height: 20px; display: flex; justify-content: flex-start;position: relative;
- top: -6px; right: -64px;
+ top: -4px; right: -194px;
  opacity: 1; font-family: Poppins;
  background-size: cover;
  cursor: pointer;
 `;
 
-export const Text2 = styled.p` display: flex;
- justify-content: flex-start;
+export const Text2 = styled.p`
 font-size: 14px;
 line-height: 18px;
+border-bottom: 1px dotted #e0e0e0;
 font-weight:300;
 color: #474747;
 letter-spacing: .5px;
 position: relative;
-left: -493px;
+left: -385px;
+top: -10px;
+&:hover {
+  text-decoration: underline;
+}`
+;
+export const Text3 = styled.p` display: flex;
+ justify-content: flex-start;
+font-size: 14px;
+line-height: 18px;
+font-weight:300;
+border-bottom: 1px dotted #e0e0e0;
+color: #474747;
+letter-spacing: .5px;
+position: relative;
+left: -380px;
 top: -10px;
 &:hover {
   text-decoration: underline;
@@ -275,7 +279,6 @@ background-color: rgba(0, 0, 0, 0.5);
 cursor: pointer;
 border: 2px solid rgba(0,0,0,0);
 text-align: right;
--webkit-tap-highlight-color: transparent;
 font-family: Arial;
 font-weight: 400;
 font-stretch: normal;
@@ -298,3 +301,14 @@ top: -474px;
 right: 178px;
 z-index: 3;
 `
+
+export const ContainerDiv = styled.div`display: flex; flex-direction: column; align-items: flex-start;
+justify-content: center;
+`;
+export const ContainerDivRatingAndReviews = styled.div`display: flex; flex-direction: row;
+align-items: flex-start;
+`;
+export const ContainerDivHeaderText = styled.div`
+`;
+
+export const IconContainerDIv = styled.div`display: flex; `;
