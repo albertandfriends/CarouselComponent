@@ -16,6 +16,8 @@ import mapMarker from '../../../images/mapMarker.png';
 import pencil from '../../../images/pencil.png';
 import Camera from '../../../images/camera.png';
 import ModalTravelers from './ModalTravelers.jsx';
+import MoreModal from './MoreModal.jsx';
+import HoursModal from './HoursModal.jsx';
 
 import {Button, Title, Rating, Reviews, TextHeader, SpanText, H4Text, Text, Heart, IconShare, Text2, CarouselFooter, CarouselFooterText, CarouselFooterTextTwo, CarouselFooterImage, CarouselFooterButton, WhiteArrowDown, Divider, OverviewDiv, OverviewText, OverviewPar, OverviewMoreSpan, OverviewFirstClock, OverviewHoursText, OverviewHoursText2, OverviewHoursAnchor, OverviewDurationClock, OverviewDurationText, OverviewHoursText3, OverviewAddress, OverviewAddressText, OverviewAddressText2, OverviewMapSpan, OverviewImproveSpan, OverviewPencil, TravelersChoice,
 CarouselPhotosButton, TravelersPhotoLogo, ContainerDiv, ContainerDivRatingAndReviews, ContainerDivHeaderText, Text3, Image0, CloseIcon } from './AppStyles.js';
@@ -57,7 +59,9 @@ class App extends React.Component {
       show: false,
       galleryShow: false,
       gallery: ["https://myfecimages.s3-us-west-1.amazonaws.com/winchester+pictures/orbs-of-light-floating.jpg"],
-      travelersHovered: false
+      travelersHovered: false,
+      moreModalShow: false,
+      hoursModalShow: false
     }
     this.enterImage = this.enterImage.bind(this);
     this.enterShareImage = this.enterShareImage.bind(this);
@@ -66,6 +70,10 @@ class App extends React.Component {
     this.showPhotosModal = this.showPhotosModal.bind(this);
     this.showTravelersModal = this.showTravelersModal.bind(this);
     this.closeTravelersModal = this.closeTravelersModal.bind(this);
+    this.showMoreModal = this.showMoreModal.bind(this);
+    this.closeMoreModal = this.closeMoreModal.bind(this);
+    this.showHoursModal = this.showHoursModal.bind(this);
+    this.closeHoursModal = this.closeHoursModal.bind(this);
   }
   showTravelersModal() {
     this.setState({
@@ -77,6 +85,26 @@ class App extends React.Component {
     this.setState({
       travelersHovered: false
     });
+  }
+  showMoreModal() {
+    this.setState({
+      moreModalShow: true
+    })
+  }
+  closeMoreModal() {
+    this.setState({
+      moreModalShow: false
+    })
+  }
+  showHoursModal() {
+    this.setState({
+      hoursModalShow: true
+    })
+  }
+  closeHoursModal() {
+    this.setState({
+      hoursModalShow: false
+    })
   }
   enterImage() {
     if(this.state.entered === false) {
@@ -114,8 +142,6 @@ class App extends React.Component {
       this.setState({galleryShow: false});
     }
   }
-
-
   hideModal() {
     this.setState({ galleryShow: false });
   };
@@ -175,9 +201,13 @@ class App extends React.Component {
       <OverviewPar>
       The Winchester Mystery House is the beautiful but bizarre mansion of Sarah Winchester, heiress of the Winchester Repeating Arms fortune. Construction began in 1884, and didn't stop for 38 years. Haunted by the spirits of Winchester rifle victims,..
       </OverviewPar>
-      <OverviewMoreSpan>
+      <OverviewMoreSpan onClick={() => this.showMoreModal()}>
         more
       </OverviewMoreSpan>
+      <MoreModal show={this.state.moreModalShow} handleClose={this.closeMoreModal}>
+      <p style={{fontSize:"15px", textAlign:"left"}}>The Winchester Mystery House is the beautiful but bizarre mansion of Sarah Winchester, heiress of the Winchester Repeating Arms fortune. Construction began in 1884, and didn't stop for 38 years. Haunted by the spirits of Winchester rifle victims, Mrs. Winchester built the Victorian mansion with many odd and mysterious features. The Winchester Mystery House is an architectural wonder and historic landmark in San Jose, CA. Self-guided garden tours are available.
+      </p>
+      </MoreModal>
       <OverviewFirstClock src={firstClock}/>
       <OverviewHoursText>
        Closed today
@@ -185,9 +215,19 @@ class App extends React.Component {
       <OverviewHoursText2>
         Hours Today: Closed
       </OverviewHoursText2>
-      <OverviewHoursAnchor>
+      <OverviewHoursAnchor onClick={this.showHoursModal}>
         See all hours
       </OverviewHoursAnchor>
+      <HoursModal handleClose={this.closeHoursModal} show={this.state.hoursModalShow}>
+      <h3 style={{fontSize:"15px", textAlign:"left",fontWeight:"700",
+    fontFamily:"Arial", paddingBottom: "6px",borderBottom: "1px solid #e0e0e0"}}>Hours</h3>
+    <p style ={{color:"#474747", display: "inline-block", fontSize: "14px", margin: "0px"}}>
+      Wed - Sun
+    </p>
+    <p style ={{color:"#474747", display: "inline-block",fontSize: "14px"}}>
+      10:00 AM - 4:00 PM
+    </p>
+      </HoursModal>
       <OverviewDurationClock src={durationClock}/>
       <OverviewDurationText>
       Suggested Duration:
@@ -212,7 +252,8 @@ class App extends React.Component {
       </OverviewDiv>
       <ShowGalleryPhotosModal galleryShow= {this.state.galleryShow} handleClose = {this.hideModal} images = {this.state.gallery}/>
       <ModalTravelers show = {this.state.travelersHovered}>
-        <h1>What is Travelers' Choice?</h1>
+        <h3 style={{color: "black"}}>What is Travelers' Choice?</h3>
+        <p style={{color: '#474747', textAlign: "left"}}>Tripadvisor gives a Travelers’ Choice award to accommodations, attractions and restaurants that consistently earn great reviews from travelers and are ranked within the top 10% of properties on Tripadvisor.</p>
       </ModalTravelers>
       <TravelersChoice src={"https://static.tacdn.com/img2/travelers_choice/2020/TC_L.svg"} onMouseEnter = {() => this.showTravelersModal()} onMouseLeave = {() => this.closeTravelersModal()}/>
       <CarouselPhotosButton onClick={() =>  this.showPhotosModal()}>

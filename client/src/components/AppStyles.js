@@ -28,7 +28,7 @@ margin-right: -4px;
 position:relative;
 top: -30px;
 
-&::before {
+&:before {
   content: '●●●●○';
   letter-spacing: -2px;
   padding: 0;
