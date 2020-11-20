@@ -1,0 +1,59 @@
+.component {
+  background-color: white;
+  width: 90%;
+  height: 80%;
+  z-index: 99;
+  margin: 0px;
+}
+
+body {
+  background-color: #EEEEEE;
+  -webkit-font-smoothing: antialiased;
+}
+:root {
+  --dot-size: 30px;
+  --dot-color: #fff;
+  --dot-background: #00aa6c;
+}
+
+.carousel {
+	height:100%;
+	margin: 0;
+	width: 100%;
+}
+
+.image-slide {
+	height: 100%;
+	width: 100%;
+	transition: background-image .3s ease-in-out;
+}
+
+.slide-arrow {
+	color: blue;
+	cursor: pointer;
+	font-size: 2rem;
+	position: fixed;
+	top: 50%;
+}
+
+.slide-arrow.right {
+	right: 1rem;
+}
+
+.slide-arrow.left {
+	left: 1rem;
+}
+
+
+button:focus {outline:0;}
+
+.display-block {
+  display: block;
+}
+
+.display-none {
+  display: none;
+}
+.outer {
+  width: 70%;
+}
