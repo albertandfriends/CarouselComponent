@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import rightArrow from '../../../images/whiteArrowRight.png';
 
 const Arrow = styled.img`
- width: 20px; height: 20px; position: relative; top: -210px; right: -800px; z-index: 2;
- cursor: pointer;
+ width: 20px; height: 20px; position: relative; top: -208px; right: -800px; z-index: 2;
+ cursor: pointer; background-color: rgba(0, 0, 0, 0.5);
 `;
 
 

@@ -9,8 +9,8 @@ width:50%;
 height: 25%;
 background-color: white;
 z-index: 999;
-top:42%;
-left:27%;
+top:100%;
+left:8%;
 color:  #545454;
 display: block;
 overlay: {

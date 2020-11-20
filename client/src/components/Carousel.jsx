@@ -27,14 +27,16 @@ class Carousel extends React.Component {
     axios.get('/api/trips/1/photos').then((response) => {
       console.log('response is', response.data)
       console.log('response also is,', response.data[0].urlLink);
+      response.data.splice(8,1);
+      response.data.splice(4,1);
       this.setState({
         imageUrls: response.data
       })
-      console.log('YES',this.state.imageUrls[0].urlLink);
+      console.log('YES',this.state.imageUrls);
     });
   }
   goToPrevSlide() {
-    const lastIndex = imgUrls.length - 1;
+    const lastIndex = this.state.imageUrls.length - 1;
     const {activeIndex} = this.state;
     const shouldResetIndex = activeIndex === 0;
     const index =  shouldResetIndex ? lastIndex : activeIndex - 1;
@@ -44,7 +46,7 @@ class Carousel extends React.Component {
     });
   }
   goToNextSlide() {
-    const lastIndex = imgUrls.length - 1;
+    const lastIndex = this.state.imageUrls.length - 1;
     const { activeIndex } = this.state;
     const shouldResetIndex = activeIndex === lastIndex;
     const index =  shouldResetIndex ? 0 : activeIndex + 1;

@@ -20,7 +20,7 @@ import MoreModal from './MoreModal.jsx';
 import HoursModal from './HoursModal.jsx';
 
 import {Button, Title, Rating, Reviews, TextHeader, SpanText, H4Text, Text, Heart, IconShare, Text2, CarouselFooter, CarouselFooterText, CarouselFooterTextTwo, CarouselFooterImage, CarouselFooterButton, WhiteArrowDown, Divider, OverviewDiv, OverviewText, OverviewPar, OverviewMoreSpan, OverviewFirstClock, OverviewHoursText, OverviewHoursText2, OverviewHoursAnchor, OverviewDurationClock, OverviewDurationText, OverviewHoursText3, OverviewAddress, OverviewAddressText, OverviewAddressText2, OverviewMapSpan, OverviewImproveSpan, OverviewPencil, TravelersChoice,
-CarouselPhotosButton, TravelersPhotoLogo, ContainerDiv, ContainerDivRatingAndReviews, ContainerDivHeaderText, Text3, Image0, CloseIcon } from './AppStyles.js';
+CarouselPhotosButton, TravelersPhotoLogo, ContainerDiv, ContainerDivRatingAndReviews, ContainerDivHeaderText, Text3, Image0, CloseIcon, CloseIcon2 } from './AppStyles.js';
 
 import Modal from './modal.jsx';
 
@@ -40,7 +40,14 @@ const ShowGalleryPhotosModal = ({handleClose,galleryShow, images}) => {
   <Image0 src={images[1].urlLink}></Image0>
   <Image0 src={images[2].urlLink}></Image0>
   <Image0 src={images[3].urlLink}></Image0>
-  <CloseIcon onClick = {() => handleClose()}/>
+  <Image0 src={images[4].urlLink}></Image0>
+  <Image0 src={images[5].urlLink}></Image0>
+  <Image0 src={images[6].urlLink}></Image0>
+  <Image0 src={images[7].urlLink}></Image0>
+  <Image0 src={images[9].urlLink}></Image0>
+  <Image0 src={images[10].urlLink}></Image0>
+  <Image0 src={images[11].urlLink}></Image0>
+  <CloseIcon2 onClick = {() => handleClose()}/>
   </PhotosModal>
   );
 } else {
@@ -164,13 +171,14 @@ class App extends React.Component {
     const images = this.state.gallery;
     let i = 0;
     return (
+      <div className="outer">
       <div className="component">
         <ContainerDiv>
         <Title>Winchester Mystery House </Title>
         </ContainerDiv>
         <ContainerDivRatingAndReviews>
         <Rating style ={{rating: 3}} > </Rating>
-        <Reviews>{this.state.reviewCount} Reviews </Reviews>
+        <Reviews>{this.state.reviewCount} Reviews</Reviews>
         </ContainerDivRatingAndReviews>
         <TextHeader>
         <SpanText> #12 </SpanText> <H4Text>of 139</H4Text><Text> things to do in San Jose</Text>
@@ -219,9 +227,9 @@ class App extends React.Component {
         See all hours
       </OverviewHoursAnchor>
       <HoursModal handleClose={this.closeHoursModal} show={this.state.hoursModalShow}>
-      <h3 style={{fontSize:"15px", textAlign:"left",fontWeight:"700",
+      <h3 style={{fontSize:"15px", textAlign:"center",fontWeight:"700",
     fontFamily:"Arial", paddingBottom: "6px",borderBottom: "1px solid #e0e0e0"}}>Hours</h3>
-    <p style ={{color:"#474747", display: "inline-block", fontSize: "14px", margin: "0px"}}>
+    <p style ={{color:"#474747", display: "inline-block", fontSize: "14px", margin: "1px", textAlign: "left"}}>
       Wed - Sun
     </p>
     <p style ={{color:"#474747", display: "inline-block",fontSize: "14px"}}>
@@ -257,9 +265,10 @@ class App extends React.Component {
       </ModalTravelers>
       <TravelersChoice src={"https://static.tacdn.com/img2/travelers_choice/2020/TC_L.svg"} onMouseEnter = {() => this.showTravelersModal()} onMouseLeave = {() => this.closeTravelersModal()}/>
       <CarouselPhotosButton onClick={() =>  this.showPhotosModal()}>
-        All photos(4)
+        All photos(11)
         </CarouselPhotosButton>
         <TravelersPhotoLogo src={Camera}/>
+      </div>
       </div>
     );
   }
@@ -268,3 +277,12 @@ class App extends React.Component {
 export default App;
 
 /*https://static.tacdn.com/img2/travelers_choice/2020/TC_L.svg*/
+/*
+
+
+
+
+
+
+
+*/

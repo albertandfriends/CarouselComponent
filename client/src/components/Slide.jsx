@@ -9,7 +9,7 @@ const Slide = ({ url }) => {
     width: '820px',
     position: 'relative',
     top: '-25px',
-    right: '-10px',
+    right: '-1%',
   };
 
   return (

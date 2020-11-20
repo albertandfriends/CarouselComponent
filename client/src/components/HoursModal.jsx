@@ -6,12 +6,12 @@ import {CloseIcon} from './AppStyles.js';
 import styled from 'styled-components';
 
 const ModalToDisplay = styled.div`position:absolute;
-width:25%;
-height: 10%;
+width:10%;
+height: 15%;
 background-color: white;
 z-index: 999;
-top:80%;
-left:20%;
+top:110%;
+left:10%;
 text-align: center;
 color:  #545454;
 display: block;

@@ -14,6 +14,8 @@ font-weight: 700;
 color: #000;
 font-family: Arial;
 margin-left: 15px;
+position: relative;
+left: -.305%;
 `;
 
 export const Rating = styled.div`
@@ -27,8 +29,14 @@ line-height: -5;
 margin-right: -4px;
 position:relative;
 top: -30px;
+left: -1.5%;
 
-&:before {
+&:hover {
+  cursor: pointer;
+}
+
+
+&::before {
   content: '●●●●○';
   letter-spacing: -2px;
   padding: 0;
@@ -48,13 +56,14 @@ font-weight: 530;
 margin-left: 13px;
 font-size: 14px;
 border-bottom: 1px dotted #e0e0e0;
-width: 14%;
+align-items: center;
 color: #474747;
 position:relative;
-top: -32px;
+top: -32.5px;
 &:hover {
   border-bottom: 1px solid #474747;
   font-weight: bold;
+  cursor: pointer;
 }
 `;
 export const TextHeader = styled.div`display: flex; justify-content: left;`;
@@ -77,17 +86,18 @@ width: 40%;
 min-height:18px;
 &:hover {
   text-decoration: underline;
+  cursor: pointer;
 }`;
 export const Heart = styled.img`
  width: 15px; height: 15px; display: flex; justify-content: flex-start;position: relative;
- top: -22px; right: -400px;
+ top: -21.5px; right: -49.45%;
  opacity: 1; font-family: Poppins;
  cursor: pointer;
 `;
 
 export const IconShare = styled.img`
 width: 20px; height: 20px; display: flex; justify-content: flex-start;position: relative;
- top: -4px; right: -194px;
+ top: -2px; right: -25%;
  opacity: 1; font-family: Poppins;
  background-size: cover;
  cursor: pointer;
@@ -101,10 +111,11 @@ font-weight:300;
 color: #474747;
 letter-spacing: .5px;
 position: relative;
-left: -385px;
+left: -47.5%;
 top: -10px;
 &:hover {
-  text-decoration: underline;
+  border-bottom: 1px solid black;
+  cursor: pointer;
 }`
 ;
 export const Text3 = styled.p` display: flex;
@@ -116,10 +127,11 @@ border-bottom: 1px dotted #e0e0e0;
 color: #474747;
 letter-spacing: .5px;
 position: relative;
-left: -380px;
+left: -47%;
 top: -10px;
 &:hover {
-  text-decoration: underline;
+  border-bottom: 1px solid black;
+  cursor: pointer;
 }`
 ;
 export const CarouselFooter = styled.div`display: flex; flex-direction: column; align-items: center; position: relative; top: -30px; left: -15px;`;
@@ -171,13 +183,18 @@ position: relative;
 top: -135px;
 right: -20px;
 `
-export const OverviewMoreSpan = styled.span`text-decoration: underline;position: relative;
+export const OverviewMoreSpan = styled.span`position: relative;
 top: -167px;
 right: -632px;font-size:14px; font-family: poppins;
 color: #474747; font-weight:250;
-cursor: pointer;
 border-bottom: .2px dotted #e0e0e0;
-border-bottom-color: rgb(224, 224, 224);`;
+border-bottom-color: rgb(224, 224, 224);
+width: 3.5%;
+&:hover {
+  border-bottom: 1px solid black;
+  cursor: pointer;
+}
+`;
 
 export const OverviewFirstClock = styled.img`height:20px; width: 20px; position: relative;
 top: -155px;
@@ -244,21 +261,33 @@ position: relative;
 top: -397px;
 right: -105px;`;
 
-export const OverviewMapSpan = styled.span`text-decoration: underline;position: relative;
+export const OverviewMapSpan = styled.span`;position: relative;
 top: -431px;
 right: -482px;font-size:14px; font-family: poppins;
 color: #474747; font-weight:250;
 cursor: pointer;
 border-bottom: .2px dotted #e0e0e0;
-border-bottom-color: rgb(224, 224, 224);`;
+border-bottom-color: rgb(224, 224, 224);
+width: 2.9%;
+&:hover {
+  border-bottom: 1px solid black;
+  cursor: pointer;
+}
+`;
 
 export const OverviewImproveSpan = styled.span` position: relative;
 top: -431px;
 right: -45px;font-size:14px; font-family: poppins;
 color: #474747; font-weight:250;
 cursor: pointer;
+width: 13.5%;
 border-bottom: .2px dotted #e0e0e0;
-border-bottom-color: rgb(224, 224, 224);`;
+border-bottom-color: rgb(224, 224, 224);
+&:hover {
+  border-bottom: 1px solid black;
+  cursor: pointer;
+}
+`;
 
 export const OverviewPencil = styled.img`height:20px; width: 20px; position: relative;
 top: -415px;
@@ -293,12 +322,12 @@ transition-duration: 0.3s;
 `
 export const TravelersChoice = styled.img`height:85px; width: 85px; position: relative;
 top: -703px;
-right: -38px;
+right: -1%;
 background-color: #faf1ed;
 `
 export const TravelersPhotoLogo = styled.img`height:20px; width: 20px; position: relative;
-top: -474px;
-right: 178px;
+top: -475px;
+right: 182px;
 z-index: 3;
 `
 
@@ -306,7 +335,7 @@ export const ContainerDiv = styled.div`display: flex; flex-direction: column; al
 justify-content: center;
 `;
 export const ContainerDivRatingAndReviews = styled.div`display: flex; flex-direction: row;
-align-items: flex-start;
+align-items: flex-start; width: 200px;
 `;
 export const ContainerDivHeaderText = styled.div`
 `;
@@ -331,7 +360,24 @@ export const CloseIcon = styled.a`display:block;
     opacity: 0.8;
   }
   position: absolute;
-  top: 5px;
-  right: 5px;
+  top: 1%;
+  right: 5%;
+  cursor: pointer;
+`;
+
+export const CloseIcon2 = styled.a`display:block;
+  box-sizing:border-box;
+  width:15px;
+  height:20px;
+  border-radius: 100%;
+  background: -webkit-linear-gradient(-45deg, transparent 0%, transparent 46%, #474747 46%, #474747 56%,transparent 56%, transparent 100%), -webkit-linear-gradient(45deg, transparent 0%, transparent 46%, #474747 46%, #474747 56%,transparent 56%, transparent 100%);
+  background-color:transparent;
+  transition: all 0.3s ease;
+  &:hover {
+    opacity: 0.8;
+  }
+  position: absolute;
+  top: 12px;
+  right: 3%;
   cursor: pointer;
 `;

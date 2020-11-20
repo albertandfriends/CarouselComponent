@@ -5,8 +5,8 @@ CarouselPhotosButton, TravelersPhotoLogo} from './AppStyles.js';
 import styled from 'styled-components';
 
 const ModalToDisplay = styled.div`position:absolute;
-width:35%;
-height:17%;
+width:25%;
+height:30%;
 background-color: white;
 border-radius: 10px;
 border: 4px solid #00bfb6;
@@ -15,8 +15,8 @@ border-right: 10px solid #fff;
 border-top: 10px solid transparent;
 border-bottom: 10px solid transparent;
 z-index: 999;
-top:18%;
-left:16%;
+top:30%;
+left:8%;
 text-align: center;
 display: block;
 &:before {
