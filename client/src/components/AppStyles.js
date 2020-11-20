@@ -276,7 +276,7 @@ width: 2.9%;
 `;
 
 export const OverviewImproveSpan = styled.span` position: relative;
-top: -431px;
+top: -442px;
 right: -45px;font-size:14px; font-family: poppins;
 color: #474747; font-weight:250;
 cursor: pointer;

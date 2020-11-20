@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import leftArrow from '../../../images/whiteArrowLeft.png';
 
 const Arrow = styled.img`
- width: 20px; height: 20px; position: relative; bottom: -134.5px; right: -10px; z-index: 2;
+ width: 20px; height: 20px; position: relative; bottom: -140.85px; right: -10px; z-index: 2;
  cursor: pointer; background-color: rgba(0, 0, 0, 0.5);
 `;
 
