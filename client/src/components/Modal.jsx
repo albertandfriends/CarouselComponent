@@ -1,0 +1,36 @@
+import React from 'react';
+import {Button, Title, Rating, Reviews, TextHeader, SpanText, H4Text, Text, Heart, IconShare, Text2, CarouselFooter, CarouselFooterText, CarouselFooterTextTwo, CarouselFooterImage, CarouselFooterButton, WhiteArrowDown, Divider, OverviewDiv, OverviewText, OverviewPar, OverviewMoreSpan, OverviewFirstClock, OverviewHoursText, OverviewHoursText2, OverviewHoursAnchor, OverviewDurationClock, OverviewDurationText, OverviewHoursText3, OverviewAddress, OverviewAddressText, OverviewAddressText2, OverviewMapSpan, OverviewImproveSpan, OverviewPencil, TravelersChoice,
+CarouselPhotosButton, TravelersPhotoLogo} from './AppStyles.js';
+
+import styled from 'styled-components';
+
+const ModalToDisplay = styled.div`position:absolute;
+width:10%;
+height: 15%;
+background-color: white;
+border-radius: 0.25rem;
+z-index: 999;
+top:24%;
+left:50%;
+text-align: center;
+color:  #545454;
+display: block;
+border: 1px solid #767676;
+padding: 1rem;
+border-radius: 8px;
+outline: 0;
+`;
+
+const Modal = ({ handleClose, show, children }) => {
+  if(show) {
+  return (
+    <ModalToDisplay>
+        {children}
+    </ModalToDisplay>
+  );
+  } else {
+    return null;
+  }
+}
+
+export default Modal;

@@ -1,132 +1,59 @@
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import heartImg from '../../../images/heart.jpg';
 import redHeartImg from '../../../images/redHeart.jpg';
 import shareIcon from '../../../images/shareIcon.png';
 import shareIconBlack from '../../../images/shareIconBlack.png';
+import Carousel from './Carousel.jsx';
+import RightArrow from './RightArrow.jsx';
+import PhotosModal from './PhotosModal.jsx';
+import walkingPNG from '../../../images/walking.png';
+import whiteArrowDown from '../../../images/WhiteArrowDown.jpg';
+import firstClock from '../../../images/firstClock.png';
+import durationClock from '../../../images/durationClock.png';
+import mapMarker from '../../../images/mapMarker.png';
+import pencil from '../../../images/pencil.png';
+import Camera from '../../../images/camera.png';
+import ModalTravelers from './ModalTravelers.jsx';
+import MoreModal from './MoreModal.jsx';
+import HoursModal from './HoursModal.jsx';
 
-const Button = styled.button`
-  background: transparent;
-  border-radius: 3px;
-  border: 2px solid palevioletred;
-  color: palevioletred;
-  margin: 0 1em;
-  padding: 0.25em 1em;
-`;
-const Title = styled.h1`font-size: 32px;
-line-height: 36px;
-font-weight: 550;
-color: #000;
-text-align: left;
-position: relative;
-left: 10px;
-top: 0px;
-font-family: Poppins;
-margin-block-start: 0.67em;
-margin-block-end: 0.67em;
-margin-inline-start: 0px;
-margin-inline-end: 0px;`;
+import {Button, Title, Rating, Reviews, TextHeader, SpanText, H4Text, Text, Heart, IconShare, Text2, CarouselFooter, CarouselFooterText, CarouselFooterTextTwo, CarouselFooterImage, CarouselFooterButton, WhiteArrowDown, Divider, OverviewDiv, OverviewText, OverviewPar, OverviewMoreSpan, OverviewFirstClock, OverviewHoursText, OverviewHoursText2, OverviewHoursAnchor, OverviewDurationClock, OverviewDurationText, OverviewHoursText3, OverviewAddress, OverviewAddressText, OverviewAddressText2, OverviewMapSpan, OverviewImproveSpan, OverviewPencil, TravelersChoice,
+CarouselPhotosButton, TravelersPhotoLogo, ContainerDiv, ContainerDivRatingAndReviews, ContainerDivHeaderText, Text3, Image0, CloseIcon, CloseIcon2 } from './AppStyles.js';
 
-const Rating = styled.div`
---percent: calc(var(4) / 5 * 100%);
---width: 20%;
+import Modal from './modal.jsx';
 
-display: inline-block;
-letter-spacing: 1px;
-font-size: var(--dot-size);
-font-family: times; // make sure ★ appears correctly
-line-height: -5;
-position: relative;
-left: -182px;
-top: -25px;
-margin-right: -4px;
-
-&::before {
-  content: '●●●●○';
-  letter-spacing: -2px;
-  padding: 0;
-  margin-right: -4px;
-  background: linear-gradient(90deg, var(--dot-background) var(--percent), var(--dot-color) var(--percent));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: #00aa6c;
-  -webkit-text-stroke: 0px #00aa6c;
-
-}
-}
-`
-
-const Reviews = styled.p`position: relative;
-left: 100px;
-bottom: 27px;
-display:inline-block;
-float:left;
-font-family: Poppins;
-font-size: 16px;
-font-weight: -20px;
-margin-left: 5px;
-font-size: 14px;
-text-decoration-style: dotted;
-width: 24%;
-&:hover {
-  text-decoration: underline;
-  font-weight: bold;
-}
-`;
-const TextHeader = styled.div`display: flex; justify-content: left;`;
-const SpanText =styled.span`position:relative; left: -180px; top: -20px; font-weight: bold; display: inline-block;
-font-size: 14px;
-line-height: 14px;`;
-const H4Text = styled.p`line-height: 14px; display:  flex; justify-content: left; font-size: 14px;
-line-height: 18px;
-color: #474747;
-letter-spacing: .5px; position: relative; left: -177px; top: -36px;`;
-const Text = styled.p`position:relative; left: -173px; top: -36px; display: inline-block;
-font-size: 14px;
-line-height: 18px;
-color: #474747;
-letter-spacing: .5px;
-width: 40%;
-&:hover {
-  text-decoration: underline;
-  font-weight: bold;
-}`;
-const Heart = styled.img`
- 15px; height: 15px; display: flex; justify-content: flex-start;position: relative;
- top: -30px; right: -270px;
- opacity: 1; font-family: Poppins;
-`;
-
-const IconShare = styled.img`
-500px; height: 500px; display: flex; justify-content: flex-start;position: relative;
- top: -10px; right: -270px;
- opacity: 1; font-family: Poppins;
- background-size: cover;
-`;
-
- const Text2 = styled.p` display: flex;
- justify-content: flex-start;
-font-size: 14px;
-line-height: 18px;
-color: #474747;
-letter-spacing: .5px;
-position: relative;
-left: -493px;
-top: -10px;
-&:hover {
-  text-decoration: underline;
-  font-weight: bold;
-}`
-;
 
  const ImgHeart = ({ success, entered }) => (
    <Heart onMouseEnter={() => entered()} onMouseLeave={() => entered()} src={success ? heartImg : redHeartImg} />
  );
 
- const ImgShare = ({ success, enteredShare }) => (
-  <IconShare onMouseEnter={() => enteredShare()} onMouseLeave={() => enteredShare()} src={success ? shareIcon : shareIconBlack} />
+ const ImgShare = ({ success, enteredShare, showModal }) => (
+  <IconShare onMouseEnter={() => enteredShare()} onMouseLeave={() => enteredShare()} src={success ? shareIcon : shareIconBlack} onClick = {showModal}/>
 );
-
+const ShowGalleryPhotosModal = ({handleClose,galleryShow, images}) => {
+  if(galleryShow === true) {
+  return (
+  <PhotosModal show={galleryShow} handleClose={handleClose} images={images}>
+  <Image0 src={images[0].urlLink}></Image0>
+  <Image0 src={images[1].urlLink}></Image0>
+  <Image0 src={images[2].urlLink}></Image0>
+  <Image0 src={images[3].urlLink}></Image0>
+  <Image0 src={images[4].urlLink}></Image0>
+  <Image0 src={images[5].urlLink}></Image0>
+  <Image0 src={images[6].urlLink}></Image0>
+  <Image0 src={images[7].urlLink}></Image0>
+  <Image0 src={images[9].urlLink}></Image0>
+  <Image0 src={images[10].urlLink}></Image0>
+  <Image0 src={images[11].urlLink}></Image0>
+  <CloseIcon2 onClick = {() => handleClose()}/>
+  </PhotosModal>
+  );
+} else {
+  return null;
+}
+}
 
 
 class App extends React.Component {
@@ -135,10 +62,56 @@ class App extends React.Component {
     this.state = {
       reviewCount: '',
       entered: true,
-      enteredShare: true
+      enteredShare: true,
+      show: false,
+      galleryShow: false,
+      gallery: ["https://myfecimages.s3-us-west-1.amazonaws.com/winchester+pictures/orbs-of-light-floating.jpg"],
+      travelersHovered: false,
+      moreModalShow: false,
+      hoursModalShow: false
     }
     this.enterImage = this.enterImage.bind(this);
     this.enterShareImage = this.enterShareImage.bind(this);
+    this.showModal = this.showModal.bind(this);
+    this.hideModal = this.hideModal.bind(this);
+    this.showPhotosModal = this.showPhotosModal.bind(this);
+    this.showTravelersModal = this.showTravelersModal.bind(this);
+    this.closeTravelersModal = this.closeTravelersModal.bind(this);
+    this.showMoreModal = this.showMoreModal.bind(this);
+    this.closeMoreModal = this.closeMoreModal.bind(this);
+    this.showHoursModal = this.showHoursModal.bind(this);
+    this.closeHoursModal = this.closeHoursModal.bind(this);
+  }
+  showTravelersModal() {
+    this.setState({
+      travelersHovered: true
+    });
+
+  }
+  closeTravelersModal() {
+    this.setState({
+      travelersHovered: false
+    });
+  }
+  showMoreModal() {
+    this.setState({
+      moreModalShow: true
+    })
+  }
+  closeMoreModal() {
+    this.setState({
+      moreModalShow: false
+    })
+  }
+  showHoursModal() {
+    this.setState({
+      hoursModalShow: true
+    })
+  }
+  closeHoursModal() {
+    this.setState({
+      hoursModalShow: false
+    })
   }
   enterImage() {
     if(this.state.entered === false) {
@@ -162,6 +135,23 @@ class App extends React.Component {
     })
   }
   }
+  showModal() {
+    if(this.state.show === false) {
+    this.setState({ show: true });
+    } else {
+      this.setState({show: false});
+    }
+  };
+  showPhotosModal() {
+    if(this.state.galleryShow === false) {
+      this.setState({galleryShow: true});
+    } else {
+      this.setState({galleryShow: false});
+    }
+  }
+  hideModal() {
+    this.setState({ galleryShow: false });
+  };
   componentDidMount() {
     axios.get('/api/trips/1/reviews').then(
       (response) => {
@@ -170,24 +160,129 @@ class App extends React.Component {
          reviewCount: response.data[0].reviewCount.toLocaleString('en')
         })
       }
-    )
-  }
+    );
+      axios.get('/api/trips/1/photos').then((response) => {
+        this.setState({
+          gallery: response.data
+        })
+      });
+    }
   render() {
+    const images = this.state.gallery;
+    let i = 0;
     return (
+      <div className="outer">
       <div className="component">
+        <ContainerDiv>
         <Title>Winchester Mystery House </Title>
-        <Rating style ={{rating: 4}} > </Rating>
-        <Reviews>{this.state.reviewCount} Reviews </Reviews>
+        </ContainerDiv>
+        <ContainerDivRatingAndReviews>
+        <Rating style ={{rating: 3}} > </Rating>
+        <Reviews>{this.state.reviewCount} Reviews</Reviews>
+        </ContainerDivRatingAndReviews>
         <TextHeader>
         <SpanText> #12 </SpanText> <H4Text>of 139</H4Text><Text> things to do in San Jose</Text>
         <ImgHeart success = {this.state.entered} entered = {this.enterImage}/>
-        <Text2>Historic Sites,  </Text2> <Text2>  Mysterious Sites</Text2>
-        <h5>Hello World</h5>
-        {/* <ImgShare enteredShare = {this.enterShareImage} success= {this.state.enteredShare}/> */}
+        <Text2>Historic Sites,  </Text2> <Text3>  Mysterious Sites</Text3>
+        <ImgShare enteredShare = {this.enterShareImage} success= {this.state.enteredShare} showModal={this.showModal}/>
+        <Modal show={this.state.show}>
+          <p>Email</p>
+          <p>Copy link</p>
+        </Modal>
         </TextHeader>
+        <Carousel/>
+        <CarouselFooter>
+        <CarouselFooterText> 2 Tours & Experiences</CarouselFooterText>
+      <CarouselFooterTextTwo> Cultural tours, Walking Tours, Biking Tours & more </CarouselFooterTextTwo>
+      <CarouselFooterImage src={walkingPNG}>
+      </CarouselFooterImage>
+      <CarouselFooterButton>
+        See available tour options
+      </CarouselFooterButton>
+      <WhiteArrowDown src={whiteArrowDown}/>
+      </CarouselFooter>
+      <Divider/>
+      <OverviewDiv>
+      <OverviewText>
+        Overview
+      </OverviewText>
+      <OverviewPar>
+      The Winchester Mystery House is the beautiful but bizarre mansion of Sarah Winchester, heiress of the Winchester Repeating Arms fortune. Construction began in 1884, and didn't stop for 38 years. Haunted by the spirits of Winchester rifle victims,..
+      </OverviewPar>
+      <OverviewMoreSpan onClick={() => this.showMoreModal()}>
+        more
+      </OverviewMoreSpan>
+      <MoreModal show={this.state.moreModalShow} handleClose={this.closeMoreModal}>
+      <p style={{fontSize:"15px", textAlign:"left"}}>The Winchester Mystery House is the beautiful but bizarre mansion of Sarah Winchester, heiress of the Winchester Repeating Arms fortune. Construction began in 1884, and didn't stop for 38 years. Haunted by the spirits of Winchester rifle victims, Mrs. Winchester built the Victorian mansion with many odd and mysterious features. The Winchester Mystery House is an architectural wonder and historic landmark in San Jose, CA. Self-guided garden tours are available.
+      </p>
+      </MoreModal>
+      <OverviewFirstClock src={firstClock}/>
+      <OverviewHoursText>
+       Closed today
+      </OverviewHoursText>
+      <OverviewHoursText2>
+        Hours Today: Closed
+      </OverviewHoursText2>
+      <OverviewHoursAnchor onClick={this.showHoursModal}>
+        See all hours
+      </OverviewHoursAnchor>
+      <HoursModal handleClose={this.closeHoursModal} show={this.state.hoursModalShow}>
+      <h3 style={{fontSize:"15px", textAlign:"center",fontWeight:"700",
+    fontFamily:"Arial", paddingBottom: "6px",borderBottom: "1px solid #e0e0e0"}}>Hours</h3>
+    <p style ={{color:"#474747", display: "inline-block", fontSize: "14px", margin: "1px", textAlign: "left"}}>
+      Wed - Sun
+    </p>
+    <p style ={{color:"#474747", display: "inline-block",fontSize: "14px"}}>
+      10:00 AM - 4:00 PM
+    </p>
+      </HoursModal>
+      <OverviewDurationClock src={durationClock}/>
+      <OverviewDurationText>
+      Suggested Duration:
+      </OverviewDurationText>
+      <OverviewHoursText3>
+        2-3 hours
+      </OverviewHoursText3>
+      <OverviewAddress src={mapMarker}/>
+      <OverviewAddressText>
+        Address:
+      </OverviewAddressText>
+      <OverviewAddressText2>
+      525 S Winchester Blvd North San Jose, San Jose, CA 95128-2588
+      </OverviewAddressText2>
+      <OverviewMapSpan>
+        Map
+      </OverviewMapSpan>
+      <OverviewPencil src={pencil}/>
+      <OverviewImproveSpan>
+       Improve this listing
+      </OverviewImproveSpan>
+      </OverviewDiv>
+      <ShowGalleryPhotosModal galleryShow= {this.state.galleryShow} handleClose = {this.hideModal} images = {this.state.gallery}/>
+      <ModalTravelers show = {this.state.travelersHovered}>
+        <h3 style={{color: "black"}}>What is Travelers' Choice?</h3>
+        <p style={{color: '#474747', textAlign: "left"}}>Tripadvisor gives a Travelers’ Choice award to accommodations, attractions and restaurants that consistently earn great reviews from travelers and are ranked within the top 10% of properties on Tripadvisor.</p>
+      </ModalTravelers>
+      <TravelersChoice src={"https://static.tacdn.com/img2/travelers_choice/2020/TC_L.svg"} onMouseEnter = {() => this.showTravelersModal()} onMouseLeave = {() => this.closeTravelersModal()}/>
+      <CarouselPhotosButton onClick={() =>  this.showPhotosModal()}>
+        All photos(11)
+        </CarouselPhotosButton>
+        <TravelersPhotoLogo src={Camera}/>
+      </div>
       </div>
     );
   }
 }
 
 export default App;
+
+/*https://static.tacdn.com/img2/travelers_choice/2020/TC_L.svg*/
+/*
+
+
+
+
+
+
+
+*/
