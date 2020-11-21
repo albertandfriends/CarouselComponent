@@ -96,7 +96,7 @@ export const Heart = styled.img`
 `;
 
 export const IconShare = styled.img`
-width: 20px; height: 20px; display: flex; justify-content: flex-start;position: relative;
+width: auto; height: 20px; display: flex; justify-content: flex-start;position: relative;
  top: -2px; right: -25%;
  opacity: 1; font-family: Poppins;
  background-size: cover;
