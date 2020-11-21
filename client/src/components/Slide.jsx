@@ -6,10 +6,9 @@ const Slide = ({ url }) => {
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     height: '325px',
-    width: '820px',
+    width: 'auto',
     position: 'relative',
     top: '-25px',
-    right: '-1%',
   };
 
   return (
