@@ -8,13 +8,19 @@ const axios = require("axios");
 
 const app = express();
 
-const PORT = 3000;
+const PORT = 3001;
 
 var faker = require('faker');
 
 app.use(express.static(path.join(__dirname, '../client/dist')))
 
-app.get('/api/trips/:id/reviews',(req,res,next) => {
+app.use('/', (req,res,next) => {
+  console.log('req url', req.url)
+  next();
+})
+
+
+app.get('/api/trips/CarouselComponent/:id/reviews',(req,res,next) => {
   console.log('params',req.params.id);
   var id = req.params.id;
   db.connection.query(`SELECT reviewCount FROM attraction where attractionId = ${id}`,(err, results, fields) => {
@@ -27,7 +33,7 @@ app.get('/api/trips/:id/reviews',(req,res,next) => {
   })
 });
 
-app.get('/api/trips/:id/photos',(req,res,next) => {
+app.get('/api/trips/CarouselComponent/:id/photos',(req,res,next) => {
 // var newObj = {'photo': 1};
 // res.send(newObj);
 db.connection.query(`SELECT urlLink from images WHERE imageID in (1,2,3,4,5,6,7,8,9,10,11,12,13)`, (err, results, fields) => {
