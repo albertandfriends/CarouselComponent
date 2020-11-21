@@ -9,7 +9,7 @@ import Carousel from './Carousel.jsx';
 import RightArrow from './RightArrow.jsx';
 import PhotosModal from './PhotosModal.jsx';
 import walkingPNG from '../../../images/walking.png';
-import whiteArrowDown from '../../../images/WhiteArrowDown.jpg';
+import whiteArrowDown from '../../../images/whiteArrowDown.jpg';
 import firstClock from '../../../images/firstClock.png';
 import durationClock from '../../../images/durationClock.png';
 import mapMarker from '../../../images/mapMarker.png';
@@ -22,7 +22,7 @@ import HoursModal from './HoursModal.jsx';
 import {Button, Title, Rating, Reviews, TextHeader, SpanText, H4Text, Text, Heart, IconShare, Text2, CarouselFooter, CarouselFooterText, CarouselFooterTextTwo, CarouselFooterImage, CarouselFooterButton, WhiteArrowDown, Divider, OverviewDiv, OverviewText, OverviewPar, OverviewMoreSpan, OverviewFirstClock, OverviewHoursText, OverviewHoursText2, OverviewHoursAnchor, OverviewDurationClock, OverviewDurationText, OverviewHoursText3, OverviewAddress, OverviewAddressText, OverviewAddressText2, OverviewMapSpan, OverviewImproveSpan, OverviewPencil, TravelersChoice,
 CarouselPhotosButton, TravelersPhotoLogo, ContainerDiv, ContainerDivRatingAndReviews, ContainerDivHeaderText, Text3, Image0, CloseIcon, CloseIcon2 } from './AppStyles.js';
 
-import Modal from './modal.jsx';
+import Modal from './Modal.jsx';
 
 
  const ImgHeart = ({ success, entered }) => (
