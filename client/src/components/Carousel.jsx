@@ -24,7 +24,7 @@ class Carousel extends React.Component {
     this.goToPrevSlide = this.goToPrevSlide.bind(this);
   }
   componentDidMount() {
-    axios.get('/api/trips/1/photos').then((response) => {
+    axios.get('/api/trips/CarouselComponent/1/photos').then((response) => {
       console.log('response is', response.data)
       console.log('response also is,', response.data[0].urlLink);
       response.data.splice(8,1);
