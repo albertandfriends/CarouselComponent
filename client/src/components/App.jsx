@@ -9,7 +9,7 @@ import Carousel from './Carousel.jsx';
 import RightArrow from './RightArrow.jsx';
 import PhotosModal from './PhotosModal.jsx';
 import walkingPNG from '../../../images/walking.png';
-import whiteArrowDown from '../../../images/WhiteArrowDown.jpg';
+import whiteArrowDown from '../../../images/whiteArrowDown.jpg';
 import firstClock from '../../../images/firstClock.png';
 import durationClock from '../../../images/durationClock.png';
 import mapMarker from '../../../images/mapMarker.png';
