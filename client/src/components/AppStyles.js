@@ -29,7 +29,7 @@ line-height: -5;
 margin-right: -4px;
 position:relative;
 top: -30px;
-left: -1.5%;
+left: -1%;
 
 &:hover {
   cursor: pointer;
@@ -66,7 +66,8 @@ top: -32.5px;
   cursor: pointer;
 }
 `;
-export const TextHeader = styled.div`display: flex; justify-content: left;`;
+export const TextHeader = styled.div`display: flex; justify-content: space-between;
+height: 40px;`;
 export const SpanText =styled.span`position:relative; left: 12px; top: -20px; font-weight: bold;
 color: #474747;
 display: inline-block;
@@ -77,28 +78,23 @@ line-height: 18px;
 color: #474747;
 letter-spacing: .5px; position: relative; left: 16px; top: -36px;
 `;
-export const Text = styled.p`position:relative; left: 19px; top: -36px; display: inline-block;
-font-size: 14px;
-line-height: 18px;
-color: #474747;
-letter-spacing: .5px;
-width: 40%;
-min-height:18px;
+export const Text = styled.p`
+margin-left: 4px;
 &:hover {
   text-decoration: underline;
   cursor: pointer;
 }`;
 export const Heart = styled.img`
  width: 15px; height: 15px; display: flex; justify-content: flex-start;position: relative;
- top: -21.5px; right: -49.45%;
+ top: -21.5px; right: -50.45%;
  opacity: 1; font-family: Poppins;
  cursor: pointer;
 `;
 
 export const IconShare = styled.img`
-width: auto; height: 20px; display: flex; justify-content: flex-start;position: relative;
- top: -2px; right: -25%;
- opacity: 1; font-family: Poppins;
+width: auto; height: 20px; position: relative;
+ top: -30px; right: 10%;
+ opacity: 1;
  background-size: cover;
  cursor: pointer;
 `;
@@ -111,7 +107,7 @@ font-weight:300;
 color: #474747;
 letter-spacing: .5px;
 position: relative;
-left: -47.5%;
+left: -49.5%;
 top: -10px;
 &:hover {
   border-bottom: 1px solid black;
@@ -137,7 +133,7 @@ top: -10px;
 export const CarouselFooter = styled.div`display: flex; flex-direction: column; align-items: center; position: relative; top: -30px; left: -15px;`;
 
 export const CarouselFooterText = styled.h1`font-family: Poppins; font-size: 16px; color: #2c2c2c; position: relative; top: -15px;`;
-export const CarouselFooterTextTwo = styled.h4`font-family: arial; font-size: 12px; color: #2c2c2c; position: relative; top: -38px; right: -55px; font-weight: lighter;`;
+export const CarouselFooterTextTwo = styled.h4`font-family: arial; font-size: 12px; color: #2c2c2c; position: relative; top: -38px; right: -7.3%; font-weight: lighter;`;
 export const CarouselFooterImage = styled.img`height: 22px; width: 22px; position: relative; left: -100px; top: -90px;`;
 
 export const CarouselFooterButton = styled.button`border: none;
@@ -154,7 +150,7 @@ font-style: normal;
 font-stretch: normal;
 letter-spacing: normal;
 font-weight: 700;
-width:800px;
+width:99%;
 position: relative;
 left: 15px;
 top: -70px;
@@ -175,17 +171,19 @@ export const OverviewText = styled.h4`font-size:16px; font-family: poppins;
 color: #474747; font-weight:550;
 position: relative;
 top: -110px;
-right: -20px;
+right: -23px;
 `;
 export const OverviewPar = styled.p`font-size:14px; font-family: poppins;
 color: #474747; font-weight:250;
 position: relative;
 top: -135px;
-right: -20px;
+right: -3.5%;
 `
 export const OverviewMoreSpan = styled.span`position: relative;
-top: -167px;
-right: -632px;font-size:14px; font-family: poppins;
+top: -166px;
+right: -76%;
+font-size:14px;
+font-family: poppins;
 color: #474747; font-weight:250;
 border-bottom: .2px dotted #e0e0e0;
 border-bottom-color: rgb(224, 224, 224);
@@ -193,6 +191,9 @@ width: 3.5%;
 &:hover {
   border-bottom: 1px solid black;
   cursor: pointer;
+}
+@media(max-width: 1200px) {
+  top: -150px;
 }
 `;
 
@@ -252,18 +253,29 @@ font-weight: 600;
 font-family: poppins;
 position: relative;
 top: -350px;
-right: -45px;`;
+right: -5%;
+@media(max-width: 800px) {
+  right: -20%;
+  top: -360px;
+}
+`;
 
 export const OverviewAddressText2 = styled.p`color: #474747; line-height:20px;
 font-size: 14px;
 font-family: poppins;
 position: relative;
 top: -397px;
-right: -105px;`;
+right: -12%;
+@media (max-width: 800px) {
+  top: -395px;
+  right: -25%;
+  width: 50%;
+}
+`;
 
 export const OverviewMapSpan = styled.span`;position: relative;
-top: -431px;
-right: -482px;font-size:14px; font-family: poppins;
+top: -430.2px;
+right: -57%;font-size:14px; font-family: poppins;
 color: #474747; font-weight:250;
 cursor: pointer;
 border-bottom: .2px dotted #e0e0e0;
@@ -272,6 +284,10 @@ width: 2.9%;
 &:hover {
   border-bottom: 1px solid black;
   cursor: pointer;
+}
+@media (max-width: 1200px) {
+  top: -417px;
+  right: -25%
 }
 `;
 
@@ -335,7 +351,7 @@ export const ContainerDiv = styled.div`display: flex; flex-direction: column; al
 justify-content: center;
 `;
 export const ContainerDivRatingAndReviews = styled.div`display: flex; flex-direction: row;
-align-items: flex-start; width: 200px;
+align-items: flex-start;
 `;
 export const ContainerDivHeaderText = styled.div`
 `;
@@ -381,3 +397,11 @@ export const CloseIcon2 = styled.a`display:block;
   right: 3%;
   cursor: pointer;
 `;
+
+export const IconDivs = styled.div`display: flex; flex-direction: column; justify-content: flex-start;`;
+
+export const TextDivs = styled.div`display: flex; flex-direction: column; justify-content: flex-start; position: relative; top: -45px;`;
+
+export const TextDiv1 = styled.div`display: flex; flex-direction:row; margin-left: 1px; color: #474747; font-size: 14px;`;
+
+export const TextDiv2 = styled.div`display: flex; flex-direction: row; margin-left: 3.5%; position: relative; top: -25px; color: #474747; font-size: 14px;`;

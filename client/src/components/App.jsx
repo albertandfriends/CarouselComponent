@@ -20,10 +20,11 @@ import MoreModal from './MoreModal.jsx';
 import HoursModal from './HoursModal.jsx';
 
 import {Button, Title, Rating, Reviews, TextHeader, SpanText, H4Text, Text, Heart, IconShare, Text2, CarouselFooter, CarouselFooterText, CarouselFooterTextTwo, CarouselFooterImage, CarouselFooterButton, WhiteArrowDown, Divider, OverviewDiv, OverviewText, OverviewPar, OverviewMoreSpan, OverviewFirstClock, OverviewHoursText, OverviewHoursText2, OverviewHoursAnchor, OverviewDurationClock, OverviewDurationText, OverviewHoursText3, OverviewAddress, OverviewAddressText, OverviewAddressText2, OverviewMapSpan, OverviewImproveSpan, OverviewPencil, TravelersChoice,
-CarouselPhotosButton, TravelersPhotoLogo, ContainerDiv, ContainerDivRatingAndReviews, ContainerDivHeaderText, Text3, Image0, CloseIcon, CloseIcon2 } from './AppStyles.js';
+CarouselPhotosButton, TravelersPhotoLogo, ContainerDiv, ContainerDivRatingAndReviews, ContainerDivHeaderText, Text3, Image0, CloseIcon, CloseIcon2, IconDivs, TextDivs, TextDiv1, TextDiv2 } from './AppStyles.js';
+
+import {Heart2, inlineIcons, InlineIcon, SVG} from './SvgStyles.js';
 
 import Modal from './modal.jsx';
-
 
  const ImgHeart = ({ success, entered }) => (
    <Heart onMouseEnter={() => entered()} onMouseLeave={() => entered()} src={success ? heartImg : redHeartImg} />
@@ -172,24 +173,31 @@ class App extends React.Component {
     let i = 0;
     return (
       <div className="outer">
-        {/* <svg viewBox="0 0 24 24" width="1em" height="1em" class="_2HBN-k68 _2JndpOur"><path d="M12.001 20.729s-6.741-5.85-8.485-8.003c-2.055-2.541-2.018-5.837.089-7.836a5.928 5.928 0 014.104-1.618c1.548 0 3.005.575 4.104 1.618l.174.165.162-.155a5.93 5.93 0 014.104-1.618c1.548 0 3.005.574 4.104 1.618 2.158 2.049 2.192 5.273.084 7.841-1.755 2.139-8.44 7.988-8.44 7.988zM7.709 5.271a3.935 3.935 0 00-2.727 1.068c-1.578 1.498-1.06 3.708.088 5.128 1.306 1.613 5.333 5.204 6.925 6.605 1.583-1.404 5.58-4.993 6.899-6.601 1.195-1.455 1.685-3.603.085-5.122-.726-.689-1.694-1.069-2.728-1.069s-2.001.38-2.728 1.069l-1.539 1.462-1.551-1.473a3.925 3.925 0 00-2.724-1.067z"></path></svg> */}
         <div className="component">
           <ContainerDiv>
-            <Title>Winchester Mystery House </Title>
+            <Title style={{position: "relative", left: "-1%"}}>Winchester Mystery House </Title>
           </ContainerDiv>
           <ContainerDivRatingAndReviews>
             <Rating style={{ rating: 3 }} > </Rating>
             <Reviews>{this.state.reviewCount} Reviews</Reviews>
           </ContainerDivRatingAndReviews>
           <TextHeader>
-            <SpanText> #12 </SpanText> <H4Text>of 139</H4Text><Text> things to do in San Jose</Text>
-            <ImgHeart success={this.state.entered} entered={this.enterImage} />
-            <Text2>Historic Sites,  </Text2> <Text3>  Mysterious Sites</Text3>
-            <ImgShare enteredShare={this.enterShareImage} success={this.state.enteredShare} showModal={this.showModal} />
+          <TextDivs>
+          <TextDiv1>
+          <p style={{marginRight: '5px', fontWeight: 'bold', marginLeft: '8px'}}>#12 </p> <p style={{letterSpacing: "-.5px"}}> of 139</p> <Text>things to do in San Jose</Text>
+          </TextDiv1>
+          <TextDiv2>
+          <Text style={{marginRight: '0px', marginLeft: '-.5px'}}>Historic Sites, </Text><Text>Mysterious Sites</Text>
+          </TextDiv2>
+          </TextDivs>
+          <IconDivs>
+          <InlineIcon>{inlineIcons.Heart}</InlineIcon>
+          <ImgShare enteredShare={this.enterShareImage} success={this.state.enteredShare} showModal={this.showModal} />
             <Modal show={this.state.show}>
               <p>Email</p>
               <p>Copy link</p>
             </Modal>
+          </IconDivs>
           </TextHeader>
           <Carousel />
           <CarouselFooter>

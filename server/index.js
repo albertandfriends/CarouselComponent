@@ -8,7 +8,7 @@ const axios = require("axios");
 
 const app = express();
 
-const PORT = process.inv.port || 3002;
+const PORT = process.env.port || 3000;
 
 var faker = require('faker');
 

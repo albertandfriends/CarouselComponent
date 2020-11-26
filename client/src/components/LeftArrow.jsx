@@ -7,7 +7,7 @@ const Arrow = styled.img`
  height: 20px;
  position: relative;
  bottom: -140px;
- right: -8px;
+ right: -6%;
  z-index: 2;
  cursor: pointer;
  background-color: rgba(0, 0, 0, 0.5);
