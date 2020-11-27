@@ -80,8 +80,9 @@ letter-spacing: .5px; position: relative; left: 16px; top: -36px;
 `;
 export const Text = styled.p`
 margin-left: 4px;
+border-bottom: 1px dotted #e0e0e0;
 &:hover {
-  text-decoration: underline;
+  border-bottom: 1px solid black;
   cursor: pointer;
 }`;
 export const Heart = styled.img`
@@ -178,6 +179,9 @@ color: #474747; font-weight:250;
 position: relative;
 top: -135px;
 right: -3.5%;
+@media(max-width: 900px) {
+  right: -1%;
+}
 `
 export const OverviewMoreSpan = styled.span`position: relative;
 top: -166px;
@@ -287,13 +291,15 @@ width: 2.9%;
 }
 @media (max-width: 1200px) {
   top: -417px;
-  right: -25%
+  right: -25%;
 }
 `;
 
 export const OverviewImproveSpan = styled.span` position: relative;
-top: -442px;
-right: -45px;font-size:14px; font-family: poppins;
+top: -440px;
+right: -5.5%;
+font-size:14px;
+font-family: poppins;
 color: #474747; font-weight:250;
 cursor: pointer;
 width: 13.5%;
@@ -302,6 +308,10 @@ border-bottom-color: rgb(224, 224, 224);
 &:hover {
   border-bottom: 1px solid black;
   cursor: pointer;
+}
+@media (max-width: 900px) {
+  right: -15%;
+  width: 35%;
 }
 `;
 
