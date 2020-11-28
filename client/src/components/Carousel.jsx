@@ -6,12 +6,7 @@ import leftArrow from '../../../images/whiteArrowLeft.png';
 import rightArrow from '../../../images/whiteArrowRight.png';
 import PhotosModal from './PhotosModal.jsx';
 import axios from 'axios';
-const imgUrls = [
- "https://myfecimages.s3-us-west-1.amazonaws.com/winchester+pictures/orbs-of-light-floating.jpg",
- "https://myfecimages.s3-us-west-1.amazonaws.com/winchester+pictures/smokey-shapes-not-visible.jpg",
- "https://myfecimages.s3-us-west-1.amazonaws.com/winchester+pictures/the-winchester-mystery.jpg",
- "https://myfecimages.s3-us-west-1.amazonaws.com/winchester+pictures/WinchesterHouse_PChang-4330.0.1484336386.jpg"
-];
+
 
 class Carousel extends React.Component {
   constructor(props) {

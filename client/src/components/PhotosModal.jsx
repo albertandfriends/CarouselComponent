@@ -24,7 +24,7 @@ const ImageBox = styled.div`
   backgroundImage: ${props => `url(${props.background})`},
   backgroundSize: 'cover',
   backgroundPosition: 'center',
-  height: '225px',
+  height: '200%',
   width: '220px',
   position: 'absolute',
   top: '-25px',

@@ -93,8 +93,8 @@ export const Heart = styled.img`
 `;
 
 export const IconShare = styled.img`
-width: auto; height: 20px; position: relative;
- top: -30px; right: 10%;
+width: 20px; height: 20px; position: relative;
+ top: -30px; right: -87%;
  opacity: 1;
  background-size: cover;
  cursor: pointer;
@@ -179,12 +179,12 @@ color: #474747; font-weight:250;
 position: relative;
 top: -135px;
 right: -3.5%;
-@media(max-width: 900px) {
+@media(max-width: 1200px) {
   right: -1%;
 }
 `
 export const OverviewMoreSpan = styled.span`position: relative;
-top: -166px;
+top: -111%;
 right: -76%;
 font-size:14px;
 font-family: poppins;
@@ -195,6 +195,10 @@ width: 3.5%;
 &:hover {
   border-bottom: 1px solid black;
   cursor: pointer;
+}
+@media(max-width: 1350px) {
+  top: -150px;
+  right: -76%;
 }
 @media(max-width: 1200px) {
   top: -150px;
@@ -258,7 +262,7 @@ font-family: poppins;
 position: relative;
 top: -350px;
 right: -5%;
-@media(max-width: 800px) {
+@media(max-width: 1200px) {
   right: -20%;
   top: -360px;
 }
@@ -309,9 +313,12 @@ border-bottom-color: rgb(224, 224, 224);
   border-bottom: 1px solid black;
   cursor: pointer;
 }
-@media (max-width: 900px) {
+@media (max-width: 1200px) {
+  right: -10%;
+  width: 16%;
+}
+@media (max-width: 700px) {
   right: -15%;
-  width: 35%;
 }
 `;
 
@@ -408,7 +415,7 @@ export const CloseIcon2 = styled.a`display:block;
   cursor: pointer;
 `;
 
-export const IconDivs = styled.div`display: flex; flex-direction: column; justify-content: flex-start;`;
+export const IconDivs = styled.div`display: flex; flex-direction: column; justify-content: flex-start; width:40%; height: 200px;`;
 
 export const TextDivs = styled.div`display: flex; flex-direction: column; justify-content: flex-start; position: relative; top: -45px;`;
 

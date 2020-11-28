@@ -216,7 +216,7 @@ class App extends React.Component {
               Overview
       </OverviewText>
             <OverviewPar>
-              The Winchester Mystery House is the beautiful but bizarre mansion of Sarah Winchester, heiress of the Winchester Repeating Arms fortune. Construction began in 1884, and didn't stop for 38 years. Haunted by the spirits of Winchester rifle victims,..
+              The Winchester Mystery House is the beautiful but bizarre mansion of Sarah Winchester, heiress of the Winchester Repeating Arms fortune. Construction began in 1884, and didn't stop for 38 years. Haunted by the spirits of Winchester rifle victims...
       </OverviewPar>
             <OverviewMoreSpan onClick={() => this.showMoreModal()}>
               more

@@ -17,7 +17,8 @@ const SVG = styled.svg`
       cursor: pointer;
     }
     position:relative;
-    top: -30px;
+    top: -15%;
+    right: -87.5%;
 `;
 
 const Path = styled.path`
