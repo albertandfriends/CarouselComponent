@@ -4,9 +4,7 @@ CarouselPhotosButton, TravelersPhotoLogo} from './AppStyles.js';
 
 import styled from 'styled-components';
 
-const ModalToDisplay = styled.div`position:absolute;
-width:25%;
-height:30%;
+const ModalToDisplay = styled.div`
 background-color: white;
 border-radius: 10px;
 border: 4px solid #00bfb6;
@@ -14,11 +12,13 @@ border-left: 10px solid transparent;
 border-right: 10px solid #fff;
 border-top: 10px solid transparent;
 border-bottom: 10px solid transparent;
-z-index: 999;
-top:30%;
-left:8%;
+top: -18%;
+left:10%;
 text-align: center;
-display: block;
+position:relative;
+width:40%;
+height:250px;
+z-index: 999;
 &:before {
   content: "";
   width: 10px;
@@ -30,6 +30,13 @@ display: block;
   border-bottom: 10px solid transparent;
   left: -20px;
   top: 10px;
+}
+@media (max-width: 900px) {
+  left: 14%;
+}
+@media (max-width: 600px) {
+  height:350px;
+  left: 28%;
 }
 `;
 

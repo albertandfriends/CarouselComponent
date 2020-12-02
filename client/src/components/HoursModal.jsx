@@ -7,10 +7,10 @@ import styled from 'styled-components';
 
 const ModalToDisplay = styled.div`position:absolute;
 width:10%;
-height: 15%;
+height: 80%;
 background-color: white;
 z-index: 999;
-top:110%;
+top:-180px;
 left:10%;
 text-align: center;
 color:  #545454;

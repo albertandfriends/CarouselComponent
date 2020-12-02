@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 const ModalToDisplay = styled.div`position:absolute;
 width:100%;
-height: 100%;
+height: 180%;
 background-color: white;
 z-index: 999;
 top:0%;

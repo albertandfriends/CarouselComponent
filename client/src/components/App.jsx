@@ -20,7 +20,7 @@ import MoreModal from './MoreModal.jsx';
 import HoursModal from './HoursModal.jsx';
 
 import {Button, Title, Rating, Reviews, TextHeader, SpanText, H4Text, Text, Heart, IconShare, Text2, CarouselFooter, CarouselFooterText, CarouselFooterTextTwo, CarouselFooterImage, CarouselFooterButton, WhiteArrowDown, Divider, OverviewDiv, OverviewText, OverviewPar, OverviewMoreSpan, OverviewFirstClock, OverviewHoursText, OverviewHoursText2, OverviewHoursAnchor, OverviewDurationClock, OverviewDurationText, OverviewHoursText3, OverviewAddress, OverviewAddressText, OverviewAddressText2, OverviewMapSpan, OverviewImproveSpan, OverviewPencil, TravelersChoice,
-CarouselPhotosButton, TravelersPhotoLogo, ContainerDiv, ContainerDivRatingAndReviews, ContainerDivHeaderText, Text3, Image0, CloseIcon, CloseIcon2, IconDivs, TextDivs, TextDiv1, TextDiv2 } from './AppStyles.js';
+CarouselPhotosButton, TravelersPhotoLogo, ContainerDiv, ContainerDivRatingAndReviews, ContainerDivHeaderText, Text3, Image0, CloseIcon, CloseIcon2, IconDivs, TextDivs, TextDiv1, TextDiv2, Container, textDiv1Text, Header, TextArea, EmailLogo, CarouselDiv, TravelersDiv, ToursAndExperiencesDiv, CarouselFooterDiv, CarouselTourOptions, PTag, OverviewTop, OverviewMiddle, OverviewMiddleHours, OverviewDurationHours, OverviewAddressDiv, OverviewImproveDiv, EmailTag, CopyTag } from './AppStyles.js';
 
 import {Heart2, inlineIcons, InlineIcon, SVG} from './SvgStyles.js';
 
@@ -76,23 +76,10 @@ class App extends React.Component {
     this.showModal = this.showModal.bind(this);
     this.hideModal = this.hideModal.bind(this);
     this.showPhotosModal = this.showPhotosModal.bind(this);
-    this.showTravelersModal = this.showTravelersModal.bind(this);
-    this.closeTravelersModal = this.closeTravelersModal.bind(this);
     this.showMoreModal = this.showMoreModal.bind(this);
     this.closeMoreModal = this.closeMoreModal.bind(this);
     this.showHoursModal = this.showHoursModal.bind(this);
     this.closeHoursModal = this.closeHoursModal.bind(this);
-  }
-  showTravelersModal() {
-    this.setState({
-      travelersHovered: true
-    });
-
-  }
-  closeTravelersModal() {
-    this.setState({
-      travelersHovered: false
-    });
   }
   showMoreModal() {
     this.setState({
@@ -156,7 +143,6 @@ class App extends React.Component {
   componentDidMount() {
     axios.get('/api/trips/CarouselComponent/1/reviews').then(
       (response) => {
-        console.log('response', response);
         this.setState({
          reviewCount: response.data[0].reviewCount.toLocaleString('en')
         })
@@ -172,19 +158,19 @@ class App extends React.Component {
     const images = this.state.gallery;
     let i = 0;
     return (
-      <div className="outer">
-        <div className="component">
+        <Container>
+          <Header>
           <ContainerDiv>
-            <Title style={{position: "relative", left: "-1%"}}>Winchester Mystery House </Title>
+            <Title style={{position: "relative", left: "-1%", top: "-28%"}}>Winchester Mystery House </Title>
           </ContainerDiv>
           <ContainerDivRatingAndReviews>
-            <Rating style={{ rating: 3 }} > </Rating>
+            <Rating style={{ rating: 4}} > </Rating>
             <Reviews>{this.state.reviewCount} Reviews</Reviews>
           </ContainerDivRatingAndReviews>
           <TextHeader>
           <TextDivs>
           <TextDiv1>
-          <p style={{marginRight: '5px', fontWeight: 'bold', marginLeft: '8px'}}>#12 </p> <p style={{letterSpacing: "-.5px"}}> of 139</p> <Text>things to do in San Jose</Text>
+          <PTag>#12 </PTag> <p style={{letterSpacing: "-.5px"}}> of 139</p> <Text>things to do in San Jose</Text>
           </TextDiv1>
           <TextDiv2>
           <Text style={{marginRight: '0px', marginLeft: '-.5px'}}>Historic Sites, </Text><Text>Mysterious Sites</Text>
@@ -194,44 +180,64 @@ class App extends React.Component {
           <InlineIcon>{inlineIcons.Heart}</InlineIcon>
           <ImgShare enteredShare={this.enterShareImage} success={this.state.enteredShare} showModal={this.showModal} />
             <Modal show={this.state.show}>
-              <p>Email</p>
-              <p>Copy link</p>
+              <EmailTag>Email</EmailTag>
+              <CopyTag>Copy link</CopyTag>
             </Modal>
           </IconDivs>
           </TextHeader>
-          <Carousel />
-          <CarouselFooter>
-            <CarouselFooterText> 2 Tours & Experiences</CarouselFooterText>
-            <CarouselFooterTextTwo> Cultural tours, Walking Tours, Biking Tours & more </CarouselFooterTextTwo>
-            <CarouselFooterImage src={walkingPNG}>
-            </CarouselFooterImage>
-            <CarouselFooterButton>
+          </Header>
+
+          <CarouselDiv>
+          <Carousel show={this.state.travelersHovered}>
+          </Carousel>
+          <ShowGalleryPhotosModal galleryShow={this.state.galleryShow} handleClose={this.hideModal} images={this.state.gallery} />
+          <CarouselPhotosButton onClick={() => this.showPhotosModal()}>
+            All photos(11)
+        </CarouselPhotosButton>
+        <TravelersPhotoLogo src={Camera} />
+          </CarouselDiv>
+
+          <CarouselFooterDiv>
+
+          <ToursAndExperiencesDiv>
+          <CarouselFooterText> 2 Tours & Experiences</CarouselFooterText>
+          <CarouselFooterTextTwo> Cultural tours, Walking Tours, Biking Tours & more </CarouselFooterTextTwo>
+          <CarouselFooterImage src={walkingPNG}>
+          </CarouselFooterImage>
+          </ToursAndExperiencesDiv>
+
+          <CarouselTourOptions>
+          <CarouselFooterButton>
               See available tour options
-      </CarouselFooterButton>
+          </CarouselFooterButton>
             <WhiteArrowDown src={whiteArrowDown} />
-          </CarouselFooter>
-          <Divider />
+            <Divider />
+          </CarouselTourOptions>
           <OverviewDiv>
-            <OverviewText>
+      <OverviewTop>
+      <OverviewText>
               Overview
       </OverviewText>
             <OverviewPar>
               The Winchester Mystery House is the beautiful but bizarre mansion of Sarah Winchester, heiress of the Winchester Repeating Arms fortune. Construction began in 1884, and didn't stop for 38 years. Haunted by the spirits of Winchester rifle victims...
-      </OverviewPar>
-            <OverviewMoreSpan onClick={() => this.showMoreModal()}>
+              <OverviewMoreSpan onClick={() => this.showMoreModal()}>
               more
       </OverviewMoreSpan>
+            </OverviewPar>
             <MoreModal show={this.state.moreModalShow} handleClose={this.closeMoreModal}>
               <p style={{ fontSize: "15px", textAlign: "left" }}>The Winchester Mystery House is the beautiful but bizarre mansion of Sarah Winchester, heiress of the Winchester Repeating Arms fortune. Construction began in 1884, and didn't stop for 38 years. Haunted by the spirits of Winchester rifle victims, Mrs. Winchester built the Victorian mansion with many odd and mysterious features. The Winchester Mystery House is an architectural wonder and historic landmark in San Jose, CA. Self-guided garden tours are available.
       </p>
             </MoreModal>
+            </OverviewTop>
+            <OverviewMiddle>
+            <OverviewMiddleHours>
             <OverviewFirstClock src={firstClock} />
             <OverviewHoursText>
               Closed today
-      </OverviewHoursText>
+            </OverviewHoursText>
             <OverviewHoursText2>
               Hours Today: Closed
-      </OverviewHoursText2>
+            </OverviewHoursText2>
             <OverviewHoursAnchor onClick={this.showHoursModal}>
               See all hours
       </OverviewHoursAnchor>
@@ -247,40 +253,40 @@ class App extends React.Component {
                 10:00 AM - 4:00 PM
     </p>
             </HoursModal>
+            </OverviewMiddleHours>
+            <OverviewDurationHours>
             <OverviewDurationClock src={durationClock} />
             <OverviewDurationText>
               Suggested Duration:
-      </OverviewDurationText>
+            </OverviewDurationText>
             <OverviewHoursText3>
               2-3 hours
-      </OverviewHoursText3>
+            </OverviewHoursText3>
+            </OverviewDurationHours>
+            <OverviewAddressDiv>
             <OverviewAddress src={mapMarker} />
             <OverviewAddressText>
               Address:
-      </OverviewAddressText>
+            </OverviewAddressText>
             <OverviewAddressText2>
-              525 S Winchester Blvd North San Jose, San Jose, CA 95128-2588
-      </OverviewAddressText2>
-            <OverviewMapSpan>
-              Map
-      </OverviewMapSpan>
+              525 S Winchester Blvd North San Jose, San Jose, CA 95128-2588 <OverviewMapSpan>Map</OverviewMapSpan>
+            </OverviewAddressText2>
+            </OverviewAddressDiv>
+            <OverviewImproveDiv>
             <OverviewPencil src={pencil} />
             <OverviewImproveSpan>
               Improve this listing
-      </OverviewImproveSpan>
-          </OverviewDiv>
-          <ShowGalleryPhotosModal galleryShow={this.state.galleryShow} handleClose={this.hideModal} images={this.state.gallery} />
-          <ModalTravelers show={this.state.travelersHovered}>
-            <h3 style={{ color: "black" }}>What is Travelers' Choice?</h3>
-            <p style={{ color: '#474747', textAlign: "left" }}>Tripadvisor gives a Travelers’ Choice award to accommodations, attractions and restaurants that consistently earn great reviews from travelers and are ranked within the top 10% of properties on Tripadvisor.</p>
-          </ModalTravelers>
-          <TravelersChoice src={"https://static.tacdn.com/img2/travelers_choice/2020/TC_L.svg"} onMouseEnter={() => this.showTravelersModal()} onMouseLeave={() => this.closeTravelersModal()} />
-          <CarouselPhotosButton onClick={() => this.showPhotosModal()}>
-            All photos(11)
-        </CarouselPhotosButton>
-          <TravelersPhotoLogo src={Camera} />
-        </div>
-      </div>
+            </OverviewImproveSpan>
+            </OverviewImproveDiv>
+
+
+            </OverviewMiddle>
+            </OverviewDiv>
+          </CarouselFooterDiv>
+
+
+
+          </Container>
     );
   }
 }

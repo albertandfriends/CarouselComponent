@@ -6,11 +6,12 @@ const Arrow = styled.img`
  width: 20px;
  height: 20px;
  position: relative;
- bottom: -140px;
+ bottom: -170px;
  right: -6%;
  z-index: 2;
  cursor: pointer;
  background-color: rgba(0, 0, 0, 0.5);
+ padding: 15px;
 `;
 
 

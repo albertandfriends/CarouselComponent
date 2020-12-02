@@ -15,19 +15,16 @@ var faker = require('faker');
 app.use(express.static(path.join(__dirname, '../client/dist')))
 
 app.use('/', (req,res,next) => {
-  console.log('req url', req.url)
   next();
 })
 
 
 app.get('/api/trips/CarouselComponent/:id/reviews',(req,res,next) => {
-  console.log('params',req.params.id);
   var id = req.params.id;
   db.connection.query(`SELECT reviewCount FROM attraction where attractionId = ${id}`,(err, results, fields) => {
     if(err) {
       throw err;
     } else {
-      console.log('results sent back');
       res.send(results);
     }
   })
@@ -41,7 +38,6 @@ db.connection.query(`SELECT urlLink from images WHERE imageID in (1,2,3,4,5,6,7,
     console.error('there is an error getting urls', err);
     throw err;
   } else {
-    console.log('results are', results);
     res.send(results);
   }
 })
