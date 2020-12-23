@@ -1,19 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 
-var DotSpan = styled.span`padding: 5px; margin-right: 5px; border-radius: 50%; background-color: rgba(214, 214, 214, 0.8); z-index: 998; position: relative; top: 210px; left: -200px; border: 1px solid #474747; text-align: center; @media(max-width: 1200px) {
-  left: -120px;
-} @media(max-width: 600px) {
-  left: -80px;
-}`;
-var NewDotSpan = styled.span`padding: 5px; margin-right: 5px; border-radius: 50%; background-color: white; z-index: 998; position: relative; top: 210px; left: -200px; border: 1px solid #474747; text-align: center; @media(max-width: 1200px) {
-  left: -120px;
-} @media(max-width: 600px) {
-  left: -80px;
-}`;
+var DotSpan = styled.span`padding: 5px; margin-right: 5px; border-radius: 50%; background-color: rgba(214, 214, 214, 0.8); z-index: 998; position: relative; top: 210px; left: -200px; border: 1px solid #474747; text-align: center; `;
+var NewDotSpan = styled.span`padding: 5px; margin-right: 5px; border-radius: 50%; background-color: white; z-index: 998; position: relative; top: 210px; left: -200px; border: 1px solid #474747; text-align: center;`;
 
 var NewestDot = styled.div`
   position: absolute;
+  left: 210px;
   width: 100%;
   display: flex;
   align-items: center;

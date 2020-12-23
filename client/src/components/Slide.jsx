@@ -1,6 +1,6 @@
 import React from 'react';
-import {TravelersChoice, TravelersPhotoLogo} from './AppStyles.js';
-import ModalTravelers from './ModalTravelers.jsx';
+import {TravelersChoice, TravelersPhotoLogo} from '../styles/AppStyles.js';
+import ModalTravelers from '../modals/ModalTravelers.jsx';
 import styled from 'styled-components';
 
 var ImageSlide = styled.div``;
@@ -12,8 +12,6 @@ const Slide = ({ url, show, showTravelersModal, closeTravelersModal }) => {
     backgroundPosition: 'center',
     height: '325px',
     width: 'auto',
-    position: 'relative',
-    top: '-60px',
   };
 
   return (

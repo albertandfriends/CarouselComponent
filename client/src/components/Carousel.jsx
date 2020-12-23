@@ -2,13 +2,12 @@ import React from 'react';
 import LeftArrow from './LeftArrow.jsx';
 import RightArrow from './RightArrow.jsx';
 import Slide from './Slide.jsx';
-import leftArrow from '../../../images/whiteArrowLeft.png';
-import rightArrow from '../../../images/whiteArrowRight.png';
-import PhotosModal from './PhotosModal.jsx';
+import PhotosModal from '../modals/PhotosModal.jsx';
 import Dots from './Dots.jsx';
 import axios from 'axios';
+import styled from 'styled-components';
 
-
+var CarouselDiv = styled.div`height: 315px;`;
 
 class Carousel extends React.Component {
   constructor(props) {
@@ -92,15 +91,12 @@ class Carousel extends React.Component {
 
   render() {
     return (
-      <div className="carousel">
+      <CarouselDiv>
         <LeftArrow goToPrevSlide = {this.goToPrevSlide}/>
-
         <Dots DotsArray={this.state.DotsArray} activeIndex = {this.state.activeDotIndex}></Dots>
-
         <Slide url={this.state.imageUrls[this.state.activeIndex].urlLink} show={this.state.travelersHovered} showTravelersModal={this.showTravelersModal} closeTravelersModal = {this.closeTravelersModal}/>
-
         <RightArrow goToNextSlide = {this.goToNextSlide}/>
-      </div>
+      </CarouselDiv>
     );
   }
 }

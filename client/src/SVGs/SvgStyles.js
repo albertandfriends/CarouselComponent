@@ -1,0 +1,52 @@
+import styled from 'styled-components';
+import React from 'react';
+
+
+// export const StyledSpinner = styled.svg`
+//   margin: -25px 0 0 -25px;
+//   width: 50px;
+//   height: 50px;
+// `;
+
+export const Heart = styled.svg`
+    width: ${props => props.width || "25px"};
+    height: ${props => props.height || "25px"};
+    &:hover {
+      fill: #d5393e !important;
+      cursor: pointer;
+    }
+    margin-right: 2px;
+`;
+
+export const Camera = styled.svg`width: ${props => props.width || "20px"};
+height: ${props => props.height || "20px"}; position:relative; left: -122px; top: -15px;`;
+
+const Path = styled.path`
+`;
+
+
+export const InlineIcon = props => (
+  <Heart
+    width="1em"
+    height="1em"
+    viewBox="0 0 24 24"
+    {...props}
+  >
+    <Path d={props.children} />
+  </Heart>
+);
+
+export const CameraIcon = props => (
+  <Camera width="20px" height="20px" viewBox="0 0 24 24" {...props}>
+  <Path d={props.children[0]} />
+  <Path d={props.children[1]} />
+  </Camera>
+);
+
+
+export const inlineIcons = {
+  MagnifingGlass: "M17.545 15.467l-3.779-3.779c0.57-0.935 0.898-2.035 0.898-3.21 0-3.417-2.961-6.377-6.378-6.377s-6.186 2.769-6.186 6.186c0 3.416 2.961 6.377 6.377 6.377 1.137 0 2.2-0.309 3.115-0.844l3.799 3.801c0.372 0.371 0.975 0.371 1.346 0l0.943-0.943c0.371-0.371 0.236-0.84-0.135-1.211zM4.004 8.287c0-2.366 1.917-4.283 4.282-4.283s4.474 2.107 4.474 4.474c0 2.365-1.918 4.283-4.283 4.283s-4.473-2.109-4.473-4.474z",
+  Heart: "M12.001 20.729s-6.741-5.85-8.485-8.003c-2.055-2.541-2.018-5.837.089-7.836a5.928 5.928 0 014.104-1.618c1.548 0 3.005.575 4.104 1.618l.174.165.162-.155a5.93 5.93 0 014.104-1.618c1.548 0 3.005.574 4.104 1.618 2.158 2.049 2.192 5.273.084 7.841-1.755 2.139-8.44 7.988-8.44 7.988zM7.709 5.271a3.935 3.935 0 00-2.727 1.068c-1.578 1.498-1.06 3.708.088 5.128 1.306 1.613 5.333 5.204 6.925 6.605 1.583-1.404 5.58-4.993 6.899-6.601 1.195-1.455 1.685-3.603.085-5.122-.726-.689-1.694-1.069-2.728-1.069s-2.001.38-2.728 1.069l-1.539 1.462-1.551-1.473a3.925 3.925 0 00-2.724-1.067z",
+  Camera: "M20 20H4c-1.103 0-2-.897-2-2V8c0-1.103.897-2 2-2h3.086l2-2h5.828l2 2H20c1.103 0 2 .897 2 2v10c0 1.103-.897 2-2 2zM4 8v10h16.002L20 8h-3.914l-2-2H9.914l-2 2H4z",
+  CameraInside: "M12 16.5c-2.206 0-4-1.794-4-4s1.794-4 4-4 4 1.794 4 4-1.794 4-4 4zm0-6c-1.103 0-2 .897-2 2s.897 2 2 2 2-.897 2-2-.897-2-2-2z"
+};

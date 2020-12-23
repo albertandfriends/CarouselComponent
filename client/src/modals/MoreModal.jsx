@@ -2,26 +2,34 @@ import React from 'react';
 
 import styled from 'styled-components';
 
-import {CloseIcon} from './AppStyles.js';
+import {CloseIcon} from '../styles/AppStyles.js';
 
-const ModalToDisplay = styled.div`position:absolute;
-width:40%;
-right: 35%;
-height: 27%;
+const ModalToDisplay = styled.div`position: fixed;
+top: 300px;
+left: 180px;
+width: 40%;
+height: 25%;
 background-color: white;
-z-index: 999;
+z-index: 99999;
 color:  #545454;
 overlay: {
   background: #FFFF00
 }
-top: 550px;
 border: 1px solid #767676;
 padding: 1rem;
 border-radius: 8px;
 outline: 0;
 @media(max-width: 1000px) {
-  width:50%;
-  height: 47%;
+  width: 40%;
+  height: 25%;
+}
+@media(max-width: 1000px) {
+  width: 40%;
+  height: 35%;
+}
+@media(max-width: 600px) {
+  width: 40%;
+  height: 45%;
 }
 `;
 
